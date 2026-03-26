@@ -18,11 +18,12 @@ body {margin:0;font-family:Arial;background:#0c0d12;color:white;}
 .check{width:20px;height:20px;border:2px solid #555;border-radius:50%;}
 .item.done .check{background:#4ade80;border:none;}
 .nav{position:fixed;bottom:0;width:100%;display:flex;background:#111;}
-.nav div{flex:1;text-align:center;padding:10px;color:#777;}
+.nav div{flex:1;text-align:center;padding:10px;color:#777;font-size:12px;}
 .nav .active{color:white;}
 .tab{display:none;}
 .tab.active{display:block;}
-textarea{width:100%;padding:10px;margin-top:10px;background:#111;color:white;border-radius:10px;}
+textarea{width:100%;padding:10px;margin-top:10px;background:#111;color:white;border-radius:10px;border:none;}
+small{color:#aaa;}
 </style>
 </head>
 
@@ -38,80 +39,147 @@ textarea{width:100%;padding:10px;margin-top:10px;background:#111;color:white;bor
 <div class="bar"><div class="fill" id="bar"></div></div>
 </div>
 
+<!-- TODAY -->
 <div id="today" class="tab active section">
+
 <div class="glass"><b>70% = geslaagde dag</b></div>
 
 <div class="glass">
 <h3>💊 Supplementen</h3>
-<div class="item" onclick="toggle(this)"><div class="check"></div>Omega 3 (met vet)</div>
-<div class="item" onclick="toggle(this)"><div class="check"></div>CoQ10 (niet nuchter)</div>
-<div class="item" onclick="toggle(this)"><div class="check"></div>Creatine (dagelijks)</div>
-<div class="item" onclick="toggle(this)"><div class="check"></div>Magnesium (avond)</div>
+<div class="item" onclick="toggle(this)"><div class="check"></div>Omega 3<br><small>Met vet nemen</small></div>
+<div class="item" onclick="toggle(this)"><div class="check"></div>CoQ10<br><small>Niet nuchter</small></div>
+<div class="item" onclick="toggle(this)"><div class="check"></div>Creatine<br><small>Dagelijks</small></div>
+<div class="item" onclick="toggle(this)"><div class="check"></div>Magnesium<br><small>Avond, ontspanning</small></div>
 </div>
 
 <div class="glass">
 <h3>💪 Workout</h3>
-<div class="item" onclick="selectWorkout('A',this)"><div class="check"></div>Workout A</div>
-<div class="item" onclick="selectWorkout('B',this)"><div class="check"></div>Workout B</div>
+<div class="item" onclick="selectWorkout('A',this)"><div class="check"></div>Workout A (kracht)</div>
+<div class="item" onclick="selectWorkout('B',this)"><div class="check"></div>Workout B (volume)</div>
 </div>
 
 <div id="workoutContainer"></div>
+
 </div>
 
-<div id="progress" class="tab section">
-<div class="glass">
-<h3>📊 Progress</h3>
-<div id="progressPercent">0%</div>
-<div style="height:150px;background:#111;border-radius:10px;">
-<div id="progressGraph" style="height:100%;width:0%;background:linear-gradient(90deg,#4facfe,#00f2fe);"></div>
-</div>
-</div>
-</div>
-
-<div id="calendar" class="tab section">
-<div class="glass">
-<h3>📅 Agenda</h3>
-<div id="calendarList"></div>
-</div>
-</div>
-
+<!-- CAROLYN -->
 <div id="carolyn" class="tab section">
+
 <div class="glass">
-<h3>🤍 Carolyn regels</h3>
-Rug recht, ogen vooruit, geen excuses, zeg minder maar sterker.
+<h3>🤍 Basis energie</h3>
+- Rustig<br>
+- Zelfzeker<br>
+- Geen haast<br>
+- Jij hoort hier<br>
 </div>
+
+<div class="glass">
+<h3>👁️ Houding</h3>
+- Rug recht<br>
+- Schouders naar achter<br>
+- Hoofd neutraal<br>
+</div>
+
+<div class="glass">
+<h3>👁️ Ogen</h3>
+- Kijk recht vooruit<br>
+- Maak oogcontact<br>
+- Kijk niet naar beneden<br>
+</div>
+
+<div class="glass">
+<h3>🎙️ Spreken</h3>
+- Spreek traag<br>
+- Geen excuses<br>
+- Pauzeer voor je spreekt<br>
+</div>
+
 <div class="glass">
 <h3>📍 Situaties</h3>
-Binnenkomen: stop, kijk, beweeg rustig.<br>
-Mensen: blijf kalm.<br>
-Onder druk: maak jezelf groter.
-</div>
+
+<b>Binnenkomen</b><br>
+1. Stop<br>
+2. Kijk rond<br>
+3. Beweeg rustig<br><br>
+
+<b>Mensen reageren</b><br>
+"Ik red het, dankje"<br><br>
+
+<b>Iemand maakt je kleiner</b><br>
+Kijk → korte reactie → verdergaan<br><br>
+
+<b>Moe</b><br>
+"Ik ga nu"<br>
+
 </div>
 
-<div id="journal" class="tab section">
 <div class="glass">
-<h3>✍️ Journal</h3>
-<textarea id="j1"></textarea>
-<textarea id="j2"></textarea>
-</div>
+<h3>💎 Oefening</h3>
+- Spiegel houding<br>
+- Kamer binnenkomen<br>
+- Rustig praten oefenen<br>
 </div>
 
+</div>
+
+<!-- JOURNAL -->
+<div id="journal" class="tab section">
+
+<div class="glass">
+<h3>☀️ Ochtend</h3>
+<textarea placeholder="Hoe voel ik me?"></textarea>
+<textarea placeholder="Wat wil ik vandaag bereiken?"></textarea>
+<textarea placeholder="Waar ben ik dankbaar voor?"></textarea>
+</div>
+
+<div class="glass">
+<h3>🌙 Avond</h3>
+<textarea placeholder="Wat heb ik gedaan?"></textarea>
+<textarea placeholder="Wat ging goed?"></textarea>
+<textarea placeholder="Wat kan beter?"></textarea>
+</div>
+
+<div class="glass">
+<h3>💭 Diep</h3>
+<textarea placeholder="Wie wil ik zijn?"></textarea>
+<textarea placeholder="Wat houdt me tegen?"></textarea>
+<textarea placeholder="Wat zou mijn beste versie doen?"></textarea>
+</div>
+
+</div>
+
+<!-- NAV -->
 <div class="nav">
 <div onclick="switchTab('today',this)" class="active">Vandaag</div>
-<div onclick="switchTab('progress',this)">Progress</div>
-<div onclick="switchTab('calendar',this)">Agenda</div>
 <div onclick="switchTab('carolyn',this)">Carolyn</div>
 <div onclick="switchTab('journal',this)">Journal</div>
 </div>
 
 <script>
-const workouts = {
-A: ["Warming up 10 min","Workout 60 min","Stretch"],
-B: ["Warming up 10 min","Workout 60 min","Stretch"]
-};
 
-let xp = localStorage.getItem("xp")||0;
-let streak = localStorage.getItem("streak")||0;
+const workouts = {
+A: [
+"🔹 Warming up (10 min)",
+"Arm raises 4x12",
+"Shoulder press 4x10",
+"Bicep curls 4x10",
+"Triceps dips 4x8",
+"Core hold 4x30s",
+"🔹 Stretch",
+"Armen stretch",
+"Schouders stretch"
+],
+B: [
+"🔹 Warming up (10 min)",
+"Arm raises 3x20",
+"Shoulder press 3x15",
+"Bicep curls 3x15",
+"Core hold 3x45s",
+"🔹 Stretch",
+"Armen stretch",
+"Rug stretch"
+]
+};
 
 function selectWorkout(type, el){
 document.querySelectorAll("[onclick^='selectWorkout']").forEach(i=>i.classList.remove("done"));
@@ -131,44 +199,6 @@ container.appendChild(div);
 
 function toggle(el){
 el.classList.toggle("done");
-xp++;
-localStorage.setItem("xp",xp);
-updateUI();
-}
-
-function updateUI(){
-document.getElementById("xp").innerText=xp;
-document.getElementById("streak").innerText=streak;
-document.getElementById("level").innerText=Math.floor(xp/100)+1;
-
-let items=document.querySelectorAll("#today .item");
-let done=document.querySelectorAll("#today .done").length;
-let pct=Math.round((done/items.length)*100);
-
-document.getElementById("bar").style.width=pct+"%";
-document.getElementById("progressPercent").innerText=pct+"%";
-document.getElementById("progressGraph").style.width=pct+"%";
-
-saveDay(pct);
-loadCalendar();
-}
-
-function saveDay(pct){
-localStorage.setItem("day_"+new Date().toDateString(),pct);
-}
-
-function loadCalendar(){
-let list=document.getElementById("calendarList");
-list.innerHTML="";
-for(let i=0;i<7;i++){
-let d=new Date();
-d.setDate(d.getDate()-i);
-let val=localStorage.getItem("day_"+d.toDateString())||0;
-let div=document.createElement("div");
-div.className="item";
-div.innerText=d.toDateString()+" — "+val+"%";
-list.appendChild(div);
-}
 }
 
 function switchTab(id,el){
@@ -178,7 +208,6 @@ document.getElementById(id).classList.add("active");
 el.classList.add("active");
 }
 
-updateUI();
 </script>
 
 </body>
