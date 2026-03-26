@@ -850,8 +850,84 @@ box-shadow: 0 8px 40px rgba(0,0,0,0.7);
 .ach-grid { grid-template-columns: repeat(4, 1fr); }
 .cbk-grid { grid-template-columns: repeat(4, 1fr); }
 }
-</style>
 
+/* ── ARCHIVE ── */
+.arch-entry {
+background: #08101e;
+border: 1.5px solid rgba(91,168,255,0.15);
+border-radius: 14px;
+margin-bottom: 10px;
+overflow: hidden;
+}
+.arch-head {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 14px 16px;
+cursor: pointer;
+}
+.arch-date {
+font-size: 14px;
+font-weight: 600;
+color: #e8f0ff;
+}
+.arch-meta {
+font-size: 11px;
+color: #7090a8;
+margin-top: 2px;
+}
+.arch-pct {
+font-size: 13px;
+font-weight: 700;
+padding: 4px 10px;
+border-radius: 9px;
+border: 1.5px solid;
+}
+.arch-pct.g { color: #40d878; background: rgba(64,216,120,0.1); border-color: rgba(64,216,120,0.3); }
+.arch-pct.y { color: #ffd050; background: rgba(255,208,80,0.1); border-color: rgba(255,208,80,0.3); }
+.arch-pct.r { color: #ff6060; background: rgba(255,96,96,0.1); border-color: rgba(255,96,96,0.3); }
+.arch-pct.e { color: #506070; background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
+.arch-chev { color: #506070; font-size: 16px; transition: transform 0.2s; margin-left: 10px; }
+.arch-entry.open .arch-chev { transform: rotate(90deg); }
+.arch-body { display: none; border-top: 1px solid rgba(91,168,255,0.1); padding: 14px 16px; }
+.arch-entry.open .arch-body { display: block; }
+.arch-section-title {
+font-size: 9px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: #90c8ff;
+font-weight: 700;
+margin-bottom: 8px;
+margin-top: 12px;
+}
+.arch-section-title:first-child { margin-top: 0; }
+.arch-q { font-size: 11px; color: #506070; font-style: italic; margin-bottom: 3px; }
+.arch-a { font-size: 13px; color: #c0d0e8; line-height: 1.5; margin-bottom: 10px; padding-left: 8px; border-left: 2px solid rgba(91,168,255,0.2); }
+.arch-task {
+display: flex;
+align-items: center;
+gap: 8px;
+padding: 6px 0;
+border-bottom: 1px solid rgba(255,255,255,0.04);
+font-size: 13px;
+}
+.arch-task:last-child { border-bottom: none; }
+.arch-task-dot {
+width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.arch-task.done-t .arch-task-dot { background: #5ba8ff; }
+.arch-task.miss-t .arch-task-dot { background: #304050; }
+.arch-task.done-t span { color: #c0d0e8; }
+.arch-task.miss-t span { color: #405060; }
+.empty-state {
+text-align: center;
+padding: 40px 20px;
+color: #405060;
+font-size: 14px;
+font-style: italic;
+}
+
+</style>
 </head>
 <body>
 
@@ -1137,6 +1213,33 @@ box-shadow: 0 8px 40px rgba(0,0,0,0.7);
   </div>
 </div>
 </div>
+
+
+<!-- ARCHIEF -->
+<div class="page" id="pg-archief">
+<div class="inner">
+
+  <div style="font-family:'Playfair Display',serif;font-size:20px;color:#e8f0ff;margin-bottom:6px">Archief</div>
+  <div style="font-size:13px;color:#506070;margin-bottom:20px;font-style:italic">Al je vorige journals en dagresultaten</div>
+
+  <!-- TABS WITHIN ARCHIEF -->
+  <div style="display:flex;gap:0;margin-bottom:18px;border-bottom:1px solid rgba(91,168,255,0.15)">
+    <div id="atab-j" onclick="switchATab('journal')" style="flex:1;text-align:center;padding:10px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#90c8ff;border-bottom:2px solid #5ba8ff;cursor:pointer">Journal</div>
+    <div id="atab-d" onclick="switchATab('dagen')" style="flex:1;text-align:center;padding:10px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#506070;border-bottom:2px solid transparent;cursor:pointer">Dagresultaten</div>
+  </div>
+
+  <!-- JOURNAL ARCHIEF -->
+  <div id="arch-journal">
+    <div id="journalArchive"></div>
+  </div>
+
+  <!-- DAGEN ARCHIEF -->
+  <div id="arch-dagen" style="display:none">
+    <div id="dagenArchive"></div>
+  </div>
+
+</div>
+</div>
 ```
 
   </div><!-- /scroller -->
@@ -1149,6 +1252,7 @@ box-shadow: 0 8px 40px rgba(0,0,0,0.7);
     <button class="nb" onclick="goTo('journal',this)"><span class="nb-ico">✍️</span><span class="nb-lbl">Journal</span><div class="nb-line"></div></button>
     <button class="nb" onclick="goTo('meals',this)"><span class="nb-ico">🥗</span><span class="nb-lbl">Meals</span><div class="nb-line"></div></button>
     <button class="nb" onclick="goTo('stats',this)"><span class="nb-ico">📊</span><span class="nb-lbl">Stats</span><div class="nb-line"></div></button>
+    <button class="nb" onclick="goTo('archief',this)"><span class="nb-ico">📖</span><span class="nb-lbl">Archief</span><div class="nb-line"></div></button>
   </div>
 
 </div><!-- /app -->
@@ -1398,6 +1502,200 @@ function init(){
   updProg();updXP();updStreak();renderMeals();loadJ();
 }
 init();
+
+/* ══════════════════════════════════
+   ARCHIEF FUNCTIES
+══════════════════════════════════ */
+
+const TASKS = [
+  {id:'w1', label:'2L water'},
+  {id:'w2', label:'Studeren — min. 2 uur'},
+  {id:'w3', label:'Journal ingevuld'},
+  {id:'w4', label:'Meditatie — 10 min'},
+  {id:'w5', label:'Carolyn spiegel — 5 min'},
+  {id:'w6', label:'"Ik ben genoeg" — hardop'},
+  {id:'cbk1', label:'CBK spiegel'},
+  {id:'cbk2', label:'CBK stem'},
+  {id:'cbk3', label:'CBK visualisatie'},
+  {id:'s1', label:'Omega 3'},
+  {id:'s2', label:'CoQ10'},
+  {id:'s3', label:'Creatine'},
+  {id:'s4', label:'Magnesium'},
+];
+
+const JLABELS = {
+  o1: 'Hoe voel ik me vandaag?',
+  o2: 'Wat wil ik vandaag bereiken?',
+  o3: 'Waar ben ik dankbaar voor?',
+  a1: 'Wat heb ik vandaag gedaan?',
+  a2: 'Wat ging goed?',
+  a3: 'Wat kan beter morgen?',
+  d1: 'Wie wil ik worden?',
+  d2: 'Wat houdt me tegen?',
+  d3: 'Wat zou mijn beste versie doen?',
+};
+
+const JSECTIONS = {
+  '☀️ Ochtend': ['o1','o2','o3'],
+  '🌙 Avond':   ['a1','a2','a3'],
+  '💭 Diep':    ['d1','d2','d3'],
+};
+
+const DAYS_FULL = ['Zondag','Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag'];
+const MONTHS_FULL = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+
+function formatDate(isoStr) {
+  const d = new Date(isoStr + 'T12:00:00');
+  return DAYS_FULL[d.getDay()] + ' ' + d.getDate() + ' ' + MONTHS_FULL[d.getMonth()] + ' ' + d.getFullYear();
+}
+
+function getAllKeys(prefix) {
+  const keys = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith(prefix)) keys.push(k);
+  }
+  return keys.sort().reverse(); // newest first
+}
+
+function renderJournalArchive() {
+  const container = document.getElementById('journalArchive');
+  const keys = getAllKeys('ms6_j_');
+  
+  if (keys.length === 0) {
+    container.innerHTML = '<div class="empty-state">Nog geen journal entries.<br>Begin vandaag met schrijven.</div>';
+    return;
+  }
+  
+  container.innerHTML = '';
+  keys.forEach(key => {
+    const dateStr = key.replace('ms6_j_', '');
+    let j = {};
+    try { j = JSON.parse(localStorage.getItem(key) || '{}'); } catch {}
+    
+    // Check if any content
+    const hasContent = Object.values(j).some(v => v && v.trim().length > 0);
+    if (!hasContent) return;
+    
+    const entry = document.createElement('div');
+    entry.className = 'arch-entry';
+    
+    // Count filled fields
+    const filled = Object.values(j).filter(v => v && v.trim().length > 0).length;
+    const total = Object.keys(JLABELS).length;
+    
+    let bodyHTML = '';
+    Object.entries(JSECTIONS).forEach(([secTitle, keys]) => {
+      const secContent = keys.map(k => {
+        const val = j[k];
+        if (!val || !val.trim()) return '';
+        return `<div class="arch-q">${JLABELS[k]}</div><div class="arch-a">${val.trim().replace(/\n/g,'<br>')}</div>`;
+      }).join('');
+      if (secContent) {
+        bodyHTML += `<div class="arch-section-title">${secTitle}</div>${secContent}`;
+      }
+    });
+    
+    entry.innerHTML = `
+      <div class="arch-head" onclick="this.closest('.arch-entry').classList.toggle('open')">
+        <div>
+          <div class="arch-date">${formatDate(dateStr)}</div>
+          <div class="arch-meta">${filled} van ${total} vragen ingevuld</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="arch-pct ${filled>=6?'g':filled>=3?'y':'r'}">${filled}/${total}</div>
+          <div class="arch-chev">›</div>
+        </div>
+      </div>
+      <div class="arch-body">${bodyHTML}</div>
+    `;
+    container.appendChild(entry);
+  });
+}
+
+function renderDagenArchive() {
+  const container = document.getElementById('dagenArchive');
+  const keys = getAllKeys('ms6_s_');
+  
+  if (keys.length === 0) {
+    container.innerHTML = '<div class="empty-state">Nog geen dagresultaten.<br>Vink vandaag je eerste taak af.</div>';
+    return;
+  }
+  
+  container.innerHTML = '';
+  keys.forEach(key => {
+    const dateStr = key.replace('ms6_s_', '');
+    let s = {};
+    try { s = JSON.parse(localStorage.getItem(key) || '{}'); } catch {}
+    
+    const pct = s._pct || 0;
+    if (pct === 0 && !Object.keys(s).some(k => !k.startsWith('_'))) return;
+    
+    const pctClass = pct >= 70 ? 'g' : pct >= 40 ? 'y' : pct > 0 ? 'r' : 'e';
+    
+    const taskRows = TASKS.map(t => {
+      const done = !!s[t.id];
+      return `<div class="arch-task ${done ? 'done-t' : 'miss-t'}">
+        <div class="arch-task-dot"></div>
+        <span>${t.label}</span>
+      </div>`;
+    }).join('');
+    
+    const entry = document.createElement('div');
+    entry.className = 'arch-entry';
+    entry.innerHTML = `
+      <div class="arch-head" onclick="this.closest('.arch-entry').classList.toggle('open')">
+        <div>
+          <div class="arch-date">${formatDate(dateStr)}</div>
+          <div class="arch-meta">Dag voltooiing</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="arch-pct ${pctClass}">${pct}%</div>
+          <div class="arch-chev">›</div>
+        </div>
+      </div>
+      <div class="arch-body">
+        <div class="arch-section-title">Taken</div>
+        ${taskRows}
+      </div>
+    `;
+    container.appendChild(entry);
+  });
+  
+  if (container.innerHTML === '') {
+    container.innerHTML = '<div class="empty-state">Nog geen dagresultaten.<br>Vink vandaag je eerste taak af.</div>';
+  }
+}
+
+let currentATab = 'journal';
+function switchATab(tab) {
+  currentATab = tab;
+  document.getElementById('arch-journal').style.display = tab === 'journal' ? 'block' : 'none';
+  document.getElementById('arch-dagen').style.display   = tab === 'dagen'   ? 'block' : 'none';
+  
+  const jTab = document.getElementById('atab-j');
+  const dTab = document.getElementById('atab-d');
+  
+  if (tab === 'journal') {
+    jTab.style.color = '#90c8ff'; jTab.style.borderBottom = '2px solid #5ba8ff';
+    dTab.style.color = '#506070'; dTab.style.borderBottom = '2px solid transparent';
+    renderJournalArchive();
+  } else {
+    dTab.style.color = '#90c8ff'; dTab.style.borderBottom = '2px solid #5ba8ff';
+    jTab.style.color = '#506070'; jTab.style.borderBottom = '2px solid transparent';
+    renderDagenArchive();
+  }
+}
+
+// Override goTo to also render archive when visiting
+const _origGoTo = goTo;
+function goTo(id, el) {
+  _origGoTo(id, el);
+  if (id === 'archief') {
+    switchATab(currentATab);
+  }
+}
+
 </script>
 
 </body>
