@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Daily Goals Elite</title>
+<title>My Daily Goals</title>
 
 <style>
 body{margin:0;background:#0c0d12;color:white;font-family:Arial;}
@@ -38,23 +38,23 @@ textarea,input{width:100%;margin-top:10px;padding:10px;background:#111;border:no
 <div class="glass">
 <h3>🧠 Essentials</h3>
 <div class="item" onclick="toggle(this)">💧 2L water</div>
-<div class="item" onclick="toggle(this)">📖 Studeren</div>
+<div class="item" onclick="toggle(this)">📖 2u studeren</div>
 <div class="item" onclick="toggle(this)">🧘 Meditatie</div>
 <div class="item" onclick="toggle(this)">✍️ Journal</div>
 </div>
 
 <div class="glass">
-<h3>💊 Supplementen</h3>
-<div class="item" onclick="toggle(this)">Omega 3 (met vet eten)</div>
-<div class="item" onclick="toggle(this)">CoQ10 (niet nuchter)</div>
-<div class="item" onclick="toggle(this)">Creatine (dagelijks)</div>
-<div class="item" onclick="toggle(this)">Magnesium (avond)</div>
+<h3>💊 Supplementen (BELANGRIJK)</h3>
+<div class="item" onclick="toggle(this)">Omega 3 → altijd met vet eten</div>
+<div class="item" onclick="toggle(this)">CoQ10 → niet nuchter nemen</div>
+<div class="item" onclick="toggle(this)">Creatine → dagelijks, tijd maakt niet uit</div>
+<div class="item" onclick="toggle(this)">Magnesium → 's avonds voor ontspanning</div>
 </div>
 
 <div class="glass">
-<h3>💪 Workout</h3>
-<div class="item" onclick="loadWorkout('A')">Workout A</div>
-<div class="item" onclick="loadWorkout('B')">Workout B</div>
+<h3>💪 Workout kiezen</h3>
+<div class="item" onclick="loadWorkout('A')">Workout A (kracht)</div>
+<div class="item" onclick="loadWorkout('B')">Workout B (volume)</div>
 </div>
 
 <div id="workout"></div>
@@ -65,25 +65,45 @@ textarea,input{width:100%;margin-top:10px;padding:10px;background:#111;border:no
 <div id="carolyn" class="tab section">
 
 <div class="glass">
-<h3>🤍 Basis</h3>
-Rustig • Zelfzeker • Geen haast • Jij hoort hier
+<h3>🤍 Basis identiteit</h3>
+Je bent rustig • Je hebt geen haast • Jij hoort hier • Jij past je niet aan
 </div>
 
 <div class="glass">
 <h3>👁️ Lichaam</h3>
-Rug recht • Schouders naar achter • Geen kleine bewegingen
+- Rug altijd recht<br>
+- Schouders ontspannen naar achter<br>
+- Geen kleine zenuwbewegingen<br>
+- Stilte = kracht
+</div>
+
+<div class="glass">
+<h3>👁️ Oogcontact</h3>
+- Kijk mensen volledig aan<br>
+- Niet wegkijken eerst<br>
+- Niet naar beneden kijken
 </div>
 
 <div class="glass">
 <h3>🎙️ Spreken</h3>
-Traag • Pauzes • Geen excuses
+- Traag praten<br>
+- Pauze nemen voor belangrijke zinnen<br>
+- Nooit “sorry maar…” zeggen
 </div>
 
 <div class="glass">
-<h3>📍 Situaties</h3>
-<div class="item">Binnenkomen → stop → kijk → beweeg</div>
-<div class="item">Hulp → “Ik red het”</div>
-<div class="item">Overweldigd → vertrek</div>
+<h3>📍 Situaties (belangrijk)</h3>
+Binnenkomen → stop → kijk → beweeg langzaam<br><br>
+Hulp → “Ik red het, dankjewel”<br><br>
+Dominantie → rug rechter, niet kleiner worden<br><br>
+Overweldigd → gewoon vertrekken zonder uitleg
+</div>
+
+<div class="glass">
+<h3>💎 Dagelijkse training</h3>
+- Spiegel oefenen (houding)<br>
+- Spreken oefenen<br>
+- Visualisatie van situaties
 </div>
 
 </div>
@@ -94,18 +114,22 @@ Traag • Pauzes • Geen excuses
 <div class="glass">
 <h3>☀️ Ochtend</h3>
 <textarea placeholder="Hoe voel ik me?"></textarea>
-<textarea placeholder="Wat wil ik vandaag?"></textarea>
+<textarea placeholder="Wat wil ik vandaag bereiken?"></textarea>
+<textarea placeholder="Wat was goed gisteren?"></textarea>
 </div>
 
 <div class="glass">
 <h3>🌙 Avond</h3>
+<textarea placeholder="Wat heb ik gedaan vandaag?"></textarea>
 <textarea placeholder="Wat ging goed?"></textarea>
 <textarea placeholder="Wat kan beter?"></textarea>
 </div>
 
 <div class="glass">
-<h3>💭 Reflectie</h3>
+<h3>💭 Diep</h3>
 <textarea placeholder="Wie wil ik worden?"></textarea>
+<textarea placeholder="Wat houdt me tegen?"></textarea>
+<textarea placeholder="Wat zou mijn beste versie doen?"></textarea>
 </div>
 
 </div>
@@ -120,6 +144,10 @@ Traag • Pauzes • Geen excuses
 <input id="carbs" placeholder="Carbs">
 <input id="fat" placeholder="Vet">
 <div class="item" onclick="addMeal()">Toevoegen</div>
+</div>
+
+<div class="glass">
+Doel: 1200 kcal • 100g proteïne • 100g carbs • 40g vet
 </div>
 
 <div id="mealList"></div>
@@ -142,10 +170,38 @@ Traag • Pauzes • Geen excuses
 
 <script>
 
-// WORKOUTS
+// WORKOUTS (NU ECHT LANG)
 const workouts={
-A:["Warm-up","Shoulder press 4x10","Curls 4x10","Dips","Stretch"],
-B:["Warm-up","High reps","Core","Stretch"]
+A:[
+"🔥 Warm-up (10 min)",
+"Arm circles 2x20",
+"Band pulls 2x15",
+
+"💪 60 MIN TRAINING",
+"Shoulder press 4x10",
+"Bicep curls 4x10",
+"Triceps dips 4x10",
+"Lateral raises 4x12",
+"Front raises 3x12",
+"Core hold 4x40 sec",
+"Seated twists 3x20",
+
+"🧘 Stretch (10 min)"
+],
+B:[
+"🔥 Warm-up",
+"Arm swings",
+"Band pulls",
+
+"💪 Volume training 60 min",
+"Curls 5x15",
+"Shoulder press 4x15",
+"Triceps extensions 4x15",
+"Lateral raises 4x15",
+"Core hold",
+
+"🧘 Stretch"
+]
 };
 
 function loadWorkout(type){
@@ -160,13 +216,11 @@ w.appendChild(d);
 });
 }
 
-// TOGGLE
 function toggle(el){
 el.classList.toggle("done");
 update();
 }
 
-// UPDATE
 function update(){
 let items=document.querySelectorAll(".item");
 let done=document.querySelectorAll(".done").length;
@@ -177,7 +231,6 @@ localStorage.setItem("day_"+new Date().toDateString(),pct);
 loadGraph();
 }
 
-// GRAPH
 function loadGraph(){
 let g=document.getElementById("graph");
 g.innerHTML="";
@@ -201,7 +254,6 @@ g.appendChild(bar);
 }
 }
 
-// NAV
 function tab(id,el){
 document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
 document.querySelectorAll(".nav div").forEach(n=>n.classList.remove("active"));
