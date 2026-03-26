@@ -12,398 +12,379 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
 :root {
-–bg: #070b14;
-–bg2: #0d1220;
-–bg3: #121929;
-–card: #131c2e;
-–card2: #1a2540;
-–border: rgba(255,255,255,0.07);
-–blue: #3b7ef8;
-–blue2: #5b94ff;
-–blue-dim: rgba(59,126,248,0.15);
-–blue-glow: rgba(59,126,248,0.25);
-–text: #e8edf5;
-–text2: #8a97b0;
-–text3: #4a5568;
-–green: #22c55e;
-–yellow: #f59e0b;
-–red: #ef4444;
-–gold: #d4af6a;
+–bg:      #070b14;
+–bg2:     #0d1220;
+–bg3:     #161e2e;
+–card:    #111827;
+–card2:   #1c2a3f;
+–border:  rgba(255,255,255,0.09);
+–blue:    #60a5fa;      /* was #3b7ef8 — nu veel lichter */
+–blue2:   #93c5fd;      /* was #5b94ff */
+–blue-dim:rgba(96,165,250,0.18);
+–blue-glow:rgba(96,165,250,0.3);
+–text:    #f0f4ff;      /* was #e8edf5 */
+–text2:   #a8b8d0;      /* was #8a97b0 */
+–text3:   #5a6a82;      /* iets lichter */
+–green:   #4ade80;
+–yellow:  #fbbf24;
+–red:     #f87171;
+–gold:    #fcd34d;
+–purple:  #c084fc;
 }
 
 - { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-  html { scroll-behavior: smooth; }
-
-body {
-background: var(–bg);
-color: var(–text);
-font-family: ‘DM Sans’, sans-serif;
-font-weight: 300;
-min-height: 100vh;
-max-width: 480px;
-margin: 0 auto;
-overflow-x: hidden;
--webkit-font-smoothing: antialiased;
-}
-
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar { width: 0; }
+  html { scroll-behavior:smooth; }
+  body {
+  background:var(–bg); color:var(–text);
+  font-family:‘DM Sans’,sans-serif; font-weight:300;
+  min-height:100vh; max-width:480px; margin:0 auto;
+  overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  }
+  ::-webkit-scrollbar { width:0; }
 
 /* ── HEADER ── */
 .header {
-position: sticky; top: 0; z-index: 200;
-background: rgba(7,11,20,0.92);
-backdrop-filter: blur(20px);
--webkit-backdrop-filter: blur(20px);
-border-bottom: 1px solid var(–border);
-padding: env(safe-area-inset-top, 0) 0 0;
+position:sticky; top:0; z-index:200;
+background:rgba(7,11,20,0.94);
+backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+border-bottom:1px solid var(–border);
+padding:env(safe-area-inset-top,0) 0 0;
 }
-.header-inner { padding: 14px 20px 10px; }
-.header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-.header-title { font-family: ‘Playfair Display’, serif; font-size: 22px; font-weight: 400; letter-spacing: -0.3px; }
-.header-meta { display: flex; align-items: center; gap: 12px; }
+.header-inner { padding:14px 20px 10px; }
+.header-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+.header-title { font-family:‘Playfair Display’,serif; font-size:22px; font-weight:400; }
+.header-meta { display:flex; align-items:center; gap:10px; }
 .xp-badge {
-background: var(–blue-dim);
-border: 1px solid rgba(59,126,248,0.3);
-border-radius: 20px; padding: 4px 10px;
-font-size: 11px; font-weight: 500; color: var(–blue2);
-letter-spacing: 0.3px;
+background:var(–blue-dim); border:1px solid rgba(96,165,250,0.4);
+border-radius:20px; padding:5px 11px;
+font-size:12px; font-weight:500; color:var(–blue2); letter-spacing:0.3px;
 }
 .streak-badge {
-background: rgba(212,175,106,0.1);
-border: 1px solid rgba(212,175,106,0.25);
-border-radius: 20px; padding: 4px 10px;
-font-size: 11px; font-weight: 500; color: var(–gold);
+background:rgba(252,211,77,0.12); border:1px solid rgba(252,211,77,0.3);
+border-radius:20px; padding:5px 11px;
+font-size:12px; font-weight:500; color:var(–gold);
 }
-.progress-wrap { display: flex; align-items: center; gap: 10px; }
-.progress-track {
-flex: 1; height: 4px; background: rgba(255,255,255,0.06);
-border-radius: 10px; overflow: hidden;
-}
+.progress-wrap { display:flex; align-items:center; gap:10px; }
+.progress-track { flex:1; height:4px; background:rgba(255,255,255,0.07); border-radius:10px; overflow:hidden; }
 .progress-fill {
-height: 100%; border-radius: 10px;
-background: linear-gradient(90deg, var(–blue), var(–blue2));
-transition: width 0.5s cubic-bezier(.34,1.56,.64,1);
-box-shadow: 0 0 10px var(–blue-glow);
+height:100%; border-radius:10px;
+background:linear-gradient(90deg,var(–blue),var(–blue2));
+transition:width 0.5s cubic-bezier(.34,1.56,.64,1);
+box-shadow:0 0 12px var(–blue-glow);
 }
-.progress-pct { font-size: 12px; font-weight: 500; color: var(–blue2); min-width: 32px; text-align: right; }
+.progress-pct { font-size:13px; font-weight:500; color:var(–blue2); min-width:34px; text-align:right; }
 
-/* ── BOTTOM NAV ── */
+/* ── NAV ── */
 .nav {
-position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
-width: 100%; max-width: 480px;
-background: rgba(7,11,20,0.95);
-backdrop-filter: blur(20px);
--webkit-backdrop-filter: blur(20px);
-border-top: 1px solid var(–border);
-display: flex;
-padding: 8px 0 calc(8px + env(safe-area-inset-bottom, 0));
-z-index: 200;
+position:fixed; bottom:0; left:50%; transform:translateX(-50%);
+width:100%; max-width:480px;
+background:rgba(7,11,20,0.96);
+backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+border-top:1px solid var(–border);
+display:flex; padding:8px 0 calc(8px + env(safe-area-inset-bottom,0));
+z-index:200;
 }
 .nav-btn {
-flex: 1; display: flex; flex-direction: column;
-align-items: center; gap: 4px;
-padding: 6px 4px;
-cursor: pointer; border: none; background: none;
-transition: all 0.2s;
+flex:1; display:flex; flex-direction:column; align-items:center; gap:4px;
+padding:6px 4px; cursor:pointer; border:none; background:none; transition:all 0.2s;
 }
-.nav-icon { font-size: 20px; transition: transform 0.2s; }
-.nav-label { font-size: 9px; letter-spacing: 0.8px; text-transform: uppercase; font-weight: 500; color: var(–text3); transition: color 0.2s; }
-.nav-btn.active .nav-label { color: var(–blue2); }
-.nav-btn.active .nav-icon { transform: translateY(-2px); }
+.nav-icon { font-size:20px; transition:transform 0.2s; }
+.nav-label { font-size:9px; letter-spacing:0.8px; text-transform:uppercase; font-weight:500; color:var(–text3); transition:color 0.2s; }
+.nav-btn.active .nav-label { color:var(–blue2); }
+.nav-btn.active .nav-icon { transform:translateY(-2px); }
 
 /* ── CONTENT ── */
-.content { padding: 16px 16px 100px; }
-.tab-pane { display: none; animation: fadeUp 0.25s ease; }
-.tab-pane.active { display: block; }
-@keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+.content { padding:16px 16px 100px; }
+.tab-pane { display:none; animation:fadeUp 0.25s ease; }
+.tab-pane.active { display:block; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
 
 /* ── SECTION ── */
-.section { margin-bottom: 20px; }
+.section { margin-bottom:20px; }
 .section-label {
-font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
-font-weight: 500; color: var(–text3); margin-bottom: 10px;
-padding: 0 2px;
+font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+font-weight:500; color:var(–text3); margin-bottom:10px; padding:0 2px;
 }
 
 /* ── CARD ── */
-.card {
-background: var(–card);
-border: 1px solid var(–border);
-border-radius: 16px;
-overflow: hidden;
-margin-bottom: 10px;
-}
-.card-header {
-padding: 14px 16px;
-display: flex; align-items: center; gap: 12px;
-cursor: pointer;
-}
-.card-body { padding: 0 16px 14px; }
+.card { background:var(–card); border:1px solid var(–border); border-radius:16px; overflow:hidden; margin-bottom:10px; }
 
 /* ── CHECK ITEM ── */
 .check-item {
-display: flex; align-items: flex-start; gap: 12px;
-padding: 13px 16px;
-border-bottom: 1px solid var(–border);
-cursor: pointer; transition: background 0.15s;
-user-select: none;
+display:flex; align-items:flex-start; gap:12px;
+padding:13px 16px; border-bottom:1px solid var(–border);
+cursor:pointer; transition:background 0.15s; user-select:none;
 }
-.check-item:last-child { border-bottom: none; }
-.check-item:active { background: rgba(255,255,255,0.02); }
-.check-item.done { opacity: 0.5; }
+.check-item:last-child { border-bottom:none; }
+.check-item:active { background:rgba(255,255,255,0.03); }
+.check-item.done { opacity:0.55; }
 .check-box {
-width: 22px; height: 22px; min-width: 22px;
-border: 1.5px solid var(–text3);
-border-radius: 6px; margin-top: 1px;
-display: flex; align-items: center; justify-content: center;
-transition: all 0.2s; font-size: 12px; color: white;
+width:22px; height:22px; min-width:22px; border:1.5px solid var(–text3);
+border-radius:6px; margin-top:1px;
+display:flex; align-items:center; justify-content:center;
+transition:all 0.2s; font-size:12px; color:white;
 }
-.check-item.done .check-box {
-background: var(–blue); border-color: var(–blue);
+.check-item.done .check-box { background:var(–blue); border-color:var(–blue); }
+.check-info { flex:1; }
+.check-label { font-size:14px; line-height:1.4; font-weight:400; color:var(–text); }
+.check-item.done .check-label { text-decoration:line-through; color:var(–text2); }
+.check-sub { font-size:11px; color:var(–text3); margin-top:2px; }
+.check-xp {
+font-size:11px; color:var(–blue2); font-weight:500;
+background:var(–blue-dim); padding:3px 7px; border-radius:8px; white-space:nowrap;
 }
-.check-info { flex: 1; }
-.check-label { font-size: 14px; line-height: 1.4; font-weight: 400; }
-.check-item.done .check-label { text-decoration: line-through; color: var(–text2); }
-.check-sub { font-size: 11px; color: var(–text3); margin-top: 2px; }
-.check-xp { font-size: 10px; color: var(–blue); font-weight: 500; background: var(–blue-dim); padding: 2px 6px; border-radius: 8px; white-space: nowrap; }
 
-/* ── PILL BUTTONS ── */
-.pill-row { display: flex; gap: 8px; padding: 16px 16px 4px; }
+/* ── PILL ── */
+.pill-row { display:flex; gap:8px; margin-bottom:10px; }
 .pill {
-flex: 1; padding: 10px; border-radius: 12px; border: 1.5px solid var(–border);
-background: var(–card2); color: var(–text2); font-family: ‘DM Sans’, sans-serif;
-font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s;
-text-align: center;
+flex:1; padding:10px; border-radius:12px; border:1.5px solid var(–border);
+background:var(–card2); color:var(–text2); font-family:‘DM Sans’,sans-serif;
+font-size:13px; font-weight:500; cursor:pointer; transition:all 0.2s; text-align:center;
 }
-.pill.selected { background: var(–blue-dim); border-color: var(–blue); color: var(–blue2); }
+.pill.selected { background:var(–blue-dim); border-color:var(–blue); color:var(–blue2); }
 
 /* ── WORKOUT ── */
-.workout-phase {
-margin-bottom: 16px;
+.workout-card { background:var(–card); border:1px solid var(–border); border-radius:14px; overflow:hidden; margin-bottom:10px; }
+.workout-head {
+padding:14px 16px; display:flex; align-items:center; gap:12px;
+cursor:pointer; border-bottom:1px solid var(–border);
 }
-.phase-title {
-font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
-color: var(–blue2); font-weight: 600; margin-bottom: 8px; padding: 0 2px;
-}
+.wh-title { font-size:15px; font-weight:500; flex:1; color:var(–text); }
+.wh-badge { font-size:11px; color:var(–blue2); background:var(–blue-dim); padding:3px 8px; border-radius:8px; }
+.wh-arrow { color:var(–text3); transition:transform 0.25s; font-size:16px; }
+.workout-card.open .wh-arrow { transform:rotate(90deg); }
+.workout-body { max-height:0; overflow:hidden; transition:max-height 0.4s cubic-bezier(0.4,0,0.2,1); }
+.workout-card.open .workout-body { max-height:3000px; }
+.workout-inner { padding:16px; }
+.phase-title { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(–blue2); font-weight:600; margin-bottom:10px; }
 .exercise {
-display: flex; align-items: flex-start; gap: 12px;
-padding: 12px 0;
-border-bottom: 1px solid var(–border);
-cursor: pointer;
+display:flex; align-items:flex-start; gap:12px;
+padding:12px 0; border-bottom:1px solid var(–border); cursor:pointer;
 }
-.exercise:last-child { border-bottom: none; }
+.exercise:last-child { border-bottom:none; }
 .ex-check {
-width: 20px; height: 20px; min-width: 20px;
-border: 1.5px solid var(–text3); border-radius: 50%;
-display: flex; align-items: center; justify-content: center;
-font-size: 10px; color: white; margin-top: 2px; transition: all 0.2s;
+width:20px; height:20px; min-width:20px; border:1.5px solid var(–text3);
+border-radius:50%; display:flex; align-items:center; justify-content:center;
+font-size:10px; color:white; margin-top:2px; transition:all 0.2s;
 }
-.exercise.done .ex-check { background: var(–green); border-color: var(–green); }
-.ex-info { flex: 1; }
-.ex-name { font-size: 14px; font-weight: 500; }
-.exercise.done .ex-name { text-decoration: line-through; color: var(–text2); }
-.ex-detail { font-size: 11px; color: var(–text3); margin-top: 3px; line-height: 1.5; }
-.ex-tag {
-font-size: 10px; background: var(–bg3); color: var(–text2);
-padding: 2px 7px; border-radius: 6px; margin-top: 4px; display: inline-block;
-}
+.exercise.done .ex-check { background:var(–green); border-color:var(–green); }
+.ex-name { font-size:14px; font-weight:500; color:var(–text); }
+.exercise.done .ex-name { text-decoration:line-through; color:var(–text2); }
+.ex-detail { font-size:11px; color:var(–text3); margin-top:3px; line-height:1.5; }
+.ex-tag { font-size:10px; background:var(–bg3); color:var(–text2); padding:2px 7px; border-radius:6px; margin-top:4px; display:inline-block; }
+.workout-phase { margin-bottom:16px; }
 
-/* ── SUPPLEMENT ── */
+/* ── SUPP ── */
 .supp-item {
-display: flex; align-items: center; gap: 12px;
-padding: 13px 16px; border-bottom: 1px solid var(–border);
-cursor: pointer;
+display:flex; align-items:center; gap:12px;
+padding:13px 16px; border-bottom:1px solid var(–border); cursor:pointer;
 }
-.supp-item:last-child { border-bottom: none; }
-.supp-dot {
-width: 10px; height: 10px; border-radius: 50%;
-background: var(–blue); transition: all 0.2s;
-}
-.supp-item.done .supp-dot { background: var(–green); box-shadow: 0 0 8px rgba(34,197,94,0.4); }
-.supp-label { flex: 1; font-size: 14px; }
-.supp-item.done .supp-label { color: var(–text3); text-decoration: line-through; }
-.supp-note { font-size: 10px; color: var(–text3); font-style: italic; }
+.supp-item:last-child { border-bottom:none; }
+.supp-dot { width:10px; height:10px; border-radius:50%; background:var(–blue); transition:all 0.2s; }
+.supp-item.done .supp-dot { background:var(–green); box-shadow:0 0 8px rgba(74,222,128,0.5); }
+.supp-label { flex:1; font-size:14px; color:var(–text); }
+.supp-item.done .supp-label { color:var(–text3); text-decoration:line-through; }
+.supp-note { font-size:11px; color:var(–text3); font-style:italic; }
+
+/* ── LEVEL ── */
+.level-section { background:var(–card); border:1px solid var(–border); border-radius:14px; padding:16px; margin-bottom:16px; }
+.level-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+.level-title { font-size:15px; font-weight:500; color:var(–text); }
+.level-sub { font-size:12px; color:var(–text2); }
+.level-track { height:6px; background:rgba(255,255,255,0.07); border-radius:10px; overflow:hidden; }
+.level-fill { height:100%; border-radius:10px; background:linear-gradient(90deg,#60a5fa,#c084fc); transition:width 0.6s cubic-bezier(.34,1.56,.64,1); }
 
 /* ── CAROLYN ── */
 .cbk-hero {
-background: linear-gradient(135deg, rgba(59,126,248,0.08), rgba(212,175,106,0.06));
-border: 1px solid rgba(212,175,106,0.15);
-border-radius: 16px; padding: 20px; margin-bottom: 16px; text-align: center;
+background:linear-gradient(135deg,rgba(96,165,250,0.1),rgba(252,211,77,0.07));
+border:1px solid rgba(252,211,77,0.2);
+border-radius:16px; padding:20px; margin-bottom:16px; text-align:center;
 }
-.cbk-quote { font-family: ‘Playfair Display’, serif; font-size: 17px; font-style: italic; color: var(–gold); line-height: 1.5; }
-.cbk-attr { font-size: 10px; color: var(–text3); margin-top: 8px; letter-spacing: 1px; text-transform: uppercase; }
+.cbk-quote { font-family:‘Playfair Display’,serif; font-size:17px; font-style:italic; color:var(–gold); line-height:1.5; }
+.cbk-attr { font-size:10px; color:var(–text3); margin-top:8px; letter-spacing:1px; text-transform:uppercase; }
 
-.rule-card { background: var(–card); border: 1px solid var(–border); border-radius: 14px; margin-bottom: 10px; overflow: hidden; }
-.rule-header {
-display: flex; align-items: center; gap: 12px; padding: 14px 16px;
-cursor: pointer;
-}
-.rule-icon { font-size: 18px; }
-.rule-title { font-size: 15px; font-weight: 500; flex: 1; }
-.rule-chevron { color: var(–text3); font-size: 14px; transition: transform 0.25s; }
-.rule-card.open .rule-chevron { transform: rotate(90deg); }
-.rule-body {
-max-height: 0; overflow: hidden;
-transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
-}
-.rule-card.open .rule-body { max-height: 800px; }
-.rule-inner { padding: 0 16px 16px; border-top: 1px solid var(–border); padding-top: 14px; }
-.rule-row { display: flex; gap: 10px; margin-bottom: 10px; font-size: 13px; line-height: 1.5; color: var(–text2); }
-.rule-row:last-child { margin-bottom: 0; }
+.rule-card { background:var(–card); border:1px solid var(–border); border-radius:14px; margin-bottom:10px; overflow:hidden; }
+.rule-header { display:flex; align-items:center; gap:12px; padding:14px 16px; cursor:pointer; }
+.rule-icon { font-size:18px; }
+.rule-title { font-size:15px; font-weight:500; flex:1; color:var(–text); }
+.rule-chevron { color:var(–text2); font-size:16px; transition:transform 0.25s; }
+.rule-card.open .rule-chevron { transform:rotate(90deg); }
+.rule-body { max-height:0; overflow:hidden; transition:max-height 0.35s cubic-bezier(0.4,0,0.2,1); }
+.rule-card.open .rule-body { max-height:800px; }
+.rule-inner { padding:0 16px 16px; border-top:1px solid var(–border); padding-top:14px; }
+.rule-row { display:flex; gap:10px; margin-bottom:10px; font-size:13px; line-height:1.5; color:var(–text2); }
+.rule-row:last-child { margin-bottom:0; }
 .rule-num {
-min-width: 22px; height: 22px; background: var(–blue-dim);
-color: var(–blue2); border-radius: 50%; font-size: 11px; font-weight: 600;
-display: flex; align-items: center; justify-content: center; margin-top: 1px;
+min-width:22px; height:22px; background:var(–blue-dim);
+color:var(–blue2); border-radius:50%; font-size:11px; font-weight:600;
+display:flex; align-items:center; justify-content:center; margin-top:1px;
 }
 .rule-phrase {
-background: var(–bg3); border-left: 2px solid var(–blue);
-padding: 6px 10px; border-radius: 0 6px 6px 0;
-font-style: italic; font-size: 12px; color: var(–text2);
-margin-top: 6px; margin-bottom: 4px;
+background:var(–bg3); border-left:2px solid var(–blue);
+padding:7px 10px; border-radius:0 6px 6px 0;
+font-style:italic; font-size:13px; color:var(–text2);
+margin:6px 0 4px;
 }
 
-.code-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
-.code-tile {
-background: var(–card); border: 1px solid var(–border);
-border-radius: 12px; padding: 14px;
-}
-.code-tile-icon { font-size: 20px; margin-bottom: 8px; }
-.code-tile-title { font-size: 12px; font-weight: 600; color: var(–blue2); margin-bottom: 4px; }
-.code-tile-text { font-size: 11px; color: var(–text2); line-height: 1.4; }
+.code-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px; }
+.code-tile { background:var(–card); border:1px solid var(–border); border-radius:12px; padding:14px; }
+.code-tile-icon { font-size:20px; margin-bottom:8px; }
+.code-tile-title { font-size:12px; font-weight:600; color:var(–blue2); margin-bottom:4px; }
+.code-tile-text { font-size:11px; color:var(–text2); line-height:1.4; }
 
 /* ── JOURNAL ── */
-.journal-date {
-font-family: ‘Playfair Display’, serif;
-font-size: 20px; color: var(–text); margin-bottom: 16px; padding-top: 4px;
-}
-.journal-block { background: var(–card); border: 1px solid var(–border); border-radius: 14px; margin-bottom: 12px; overflow: hidden; }
-.journal-block-header { padding: 14px 16px 0; }
-.journal-block-title { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(–blue2); font-weight: 600; margin-bottom: 12px; }
-.journal-prompt { margin-bottom: 14px; padding: 0 16px; }
-.journal-prompt:last-child { margin-bottom: 14px; }
-.jp-q { font-size: 13px; color: var(–text2); margin-bottom: 6px; font-style: italic; }
+.journal-date { font-family:‘Playfair Display’,serif; font-size:20px; color:var(–text); margin-bottom:16px; }
+.journal-block { background:var(–card); border:1px solid var(–border); border-radius:14px; margin-bottom:12px; overflow:hidden; }
+.journal-block-header { padding:14px 16px 0; }
+.jb-title { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(–blue2); font-weight:600; margin-bottom:12px; }
+.journal-prompt { margin-bottom:14px; padding:0 16px; }
+.jp-q { font-size:13px; color:var(–text2); margin-bottom:6px; font-style:italic; }
 .jp-input {
-width: 100%; background: var(–bg3); border: 1px solid var(–border);
-border-radius: 8px; padding: 10px 12px;
-color: var(–text); font-family: ‘DM Sans’, sans-serif;
-font-size: 13px; font-weight: 300; resize: none; outline: none;
-line-height: 1.6; transition: border-color 0.2s;
+width:100%; background:var(–bg3); border:1px solid var(–border);
+border-radius:8px; padding:10px 12px; color:var(–text);
+font-family:‘DM Sans’,sans-serif; font-size:13px; font-weight:300;
+resize:none; outline:none; line-height:1.6; transition:border-color 0.2s;
 }
-.jp-input:focus { border-color: rgba(59,126,248,0.4); }
-.jp-input::placeholder { color: var(–text3); }
+.jp-input:focus { border-color:rgba(96,165,250,0.5); }
+.jp-input::placeholder { color:var(–text3); }
 
 /* ── MEALS ── */
-.macro-row { display: flex; gap: 8px; margin-bottom: 16px; }
-.macro-tile {
-flex: 1; background: var(–card); border: 1px solid var(–border);
-border-radius: 12px; padding: 12px 10px; text-align: center;
-}
-.macro-val { font-size: 20px; font-weight: 500; line-height: 1; margin-bottom: 2px; }
-.macro-label { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(–text3); margin-bottom: 6px; }
-.macro-bar { height: 3px; background: rgba(255,255,255,0.08); border-radius: 10px; overflow: hidden; }
-.macro-bar-fill { height: 100%; border-radius: 10px; transition: width 0.4s; }
-
-.meal-form { background: var(–card); border: 1px solid var(–border); border-radius: 14px; padding: 16px; margin-bottom: 14px; }
-.form-title { font-size: 12px; color: var(–text3); margin-bottom: 12px; letter-spacing: 0.5px; text-transform: uppercase; }
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
-.form-field { display: flex; flex-direction: column; gap: 4px; }
-.form-field.full { grid-column: 1/-1; }
-.field-label { font-size: 10px; color: var(–text3); letter-spacing: 0.5px; }
+.macro-row { display:flex; gap:8px; margin-bottom:16px; }
+.macro-tile { flex:1; background:var(–card); border:1px solid var(–border); border-radius:12px; padding:12px 8px; text-align:center; }
+.macro-val { font-size:18px; font-weight:500; line-height:1; margin-bottom:2px; }
+.macro-label { font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(–text3); margin-bottom:6px; }
+.macro-bar { height:3px; background:rgba(255,255,255,0.08); border-radius:10px; overflow:hidden; }
+.macro-bar-fill { height:100%; border-radius:10px; transition:width 0.4s; }
+.meal-form { background:var(–card); border:1px solid var(–border); border-radius:14px; padding:16px; margin-bottom:14px; }
+.form-title { font-size:11px; color:var(–text3); margin-bottom:12px; letter-spacing:0.5px; text-transform:uppercase; }
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px; }
+.form-field { display:flex; flex-direction:column; gap:4px; }
+.form-field.full { grid-column:1/-1; }
+.field-label { font-size:10px; color:var(–text3); letter-spacing:0.5px; }
 .field-input {
-background: var(–bg3); border: 1px solid var(–border);
-border-radius: 8px; padding: 9px 10px;
-color: var(–text); font-family: ‘DM Sans’, sans-serif;
-font-size: 14px; outline: none; transition: border-color 0.2s;
+background:var(–bg3); border:1px solid var(–border); border-radius:8px;
+padding:9px 10px; color:var(–text); font-family:‘DM Sans’,sans-serif;
+font-size:14px; outline:none; transition:border-color 0.2s;
 }
-.field-input:focus { border-color: rgba(59,126,248,0.4); }
+.field-input:focus { border-color:rgba(96,165,250,0.5); }
 .add-btn {
-width: 100%; padding: 12px;
-background: var(–blue); border: none; border-radius: 10px;
-color: white; font-family: ‘DM Sans’, sans-serif;
-font-size: 14px; font-weight: 500; cursor: pointer;
-transition: all 0.2s; letter-spacing: 0.3px;
+width:100%; padding:12px; background:var(–blue); border:none; border-radius:10px;
+color:white; font-family:‘DM Sans’,sans-serif; font-size:14px; font-weight:500;
+cursor:pointer; transition:all 0.2s;
 }
-.add-btn:active { transform: scale(0.97); }
-
-.meal-list { }
+.add-btn:active { transform:scale(0.97); opacity:0.9; }
 .meal-entry {
-display: flex; align-items: center; gap: 12px;
-padding: 13px 16px; background: var(–card);
-border: 1px solid var(–border); border-radius: 12px;
-margin-bottom: 8px;
+display:flex; align-items:center; gap:12px; padding:13px 16px;
+background:var(–card); border:1px solid var(–border); border-radius:12px; margin-bottom:8px;
 }
-.meal-name { font-size: 14px; flex: 1; }
-.meal-kcal { font-size: 14px; font-weight: 500; color: var(–blue2); }
-.meal-macros { font-size: 10px; color: var(–text3); margin-top: 2px; }
-.meal-del { background: none; border: none; color: var(–text3); cursor: pointer; font-size: 16px; padding: 4px; }
+.meal-name { font-size:14px; flex:1; color:var(–text); }
+.meal-kcal { font-size:14px; font-weight:500; color:var(–blue2); }
+.meal-macros { font-size:10px; color:var(–text3); margin-top:2px; }
+.meal-del { background:none; border:none; color:var(–text3); cursor:pointer; font-size:16px; padding:4px; }
 
 /* ── STATS ── */
-.stats-overview { display: flex; gap: 8px; margin-bottom: 16px; }
-.stat-tile {
-flex: 1; background: var(–card); border: 1px solid var(–border);
-border-radius: 12px; padding: 14px 12px; text-align: center;
+.stats-overview { display:flex; gap:8px; margin-bottom:16px; }
+.stat-tile { flex:1; background:var(–card); border:1px solid var(–border); border-radius:12px; padding:14px 10px; text-align:center; }
+.stat-num { font-size:26px; font-weight:300; font-family:‘Playfair Display’,serif; line-height:1; }
+.stat-lbl { font-size:9px; color:var(–text3); text-transform:uppercase; letter-spacing:1px; margin-top:4px; }
+.week-chart { background:var(–card); border:1px solid var(–border); border-radius:14px; padding:16px; margin-bottom:14px; }
+.chart-title { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(–text3); margin-bottom:14px; }
+.chart-bars { display:flex; align-items:flex-end; gap:6px; height:80px; margin-bottom:8px; }
+.chart-col { flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end; }
+.chart-bar { width:100%; border-radius:4px 4px 0 0; min-height:4px; transition:height 0.5s cubic-bezier(.34,1.56,.64,1); }
+.chart-bar.green { background:var(–green); }
+.chart-bar.yellow { background:var(–yellow); }
+.chart-bar.red { background:var(–red); }
+.chart-bar.empty { background:var(–bg3); }
+.chart-day { font-size:9px; color:var(–text3); text-transform:uppercase; }
+.interp-card { background:var(–card); border:1px solid var(–border); border-radius:12px; padding:16px; margin-bottom:14px; }
+.interp-label { font-size:10px; color:var(–text3); letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; }
+.interp-text { font-size:14px; color:var(–text); line-height:1.5; }
+
+/* ── ACHIEVEMENTS ── */
+.ach-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.ach-card {
+background:var(–card); border:1px solid var(–border);
+border-radius:14px; padding:14px; text-align:center;
+transition:all 0.3s; position:relative; overflow:hidden;
 }
-.stat-num { font-size: 26px; font-weight: 300; font-family: ‘Playfair Display’, serif; line-height: 1; }
-.stat-lbl { font-size: 9px; color: var(–text3); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-
-.week-chart { background: var(–card); border: 1px solid var(–border); border-radius: 14px; padding: 16px; margin-bottom: 14px; }
-.chart-title { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(–text3); margin-bottom: 14px; }
-.chart-bars { display: flex; align-items: flex-end; gap: 6px; height: 80px; margin-bottom: 8px; }
-.chart-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; justify-content: flex-end; }
-.chart-bar { width: 100%; border-radius: 4px 4px 0 0; min-height: 4px; transition: height 0.5s cubic-bezier(.34,1.56,.64,1); }
-.chart-bar.green { background: var(–green); }
-.chart-bar.yellow { background: var(–yellow); }
-.chart-bar.red { background: var(–red); }
-.chart-bar.empty { background: var(–bg3); }
-.chart-day { font-size: 9px; color: var(–text3); text-transform: uppercase; letter-spacing: 0.5px; }
-
-.interp-card { background: var(–card); border: 1px solid var(–border); border-radius: 12px; padding: 16px; }
-.interp-label { font-size: 10px; color: var(–text3); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
-.interp-text { font-size: 14px; color: var(–text); line-height: 1.5; }
-
-/* ── LEVEL BAR ── */
-.level-section { background: var(–card); border: 1px solid var(–border); border-radius: 14px; padding: 16px; margin-bottom: 16px; }
-.level-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.level-title { font-size: 15px; font-weight: 500; }
-.level-sub { font-size: 12px; color: var(–text3); }
-.level-track { height: 6px; background: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden; }
-.level-fill {
-height: 100%; border-radius: 10px;
-background: linear-gradient(90deg, #3b7ef8, #7c3aed);
-transition: width 0.6s cubic-bezier(.34,1.56,.64,1);
+.ach-card.unlocked {
+border-color:rgba(252,211,77,0.4);
+background:linear-gradient(135deg,rgba(252,211,77,0.08),rgba(96,165,250,0.06));
+}
+.ach-card.locked { opacity:0.45; }
+.ach-icon { font-size:28px; margin-bottom:8px; display:block; }
+.ach-name { font-size:12px; font-weight:500; color:var(–text); margin-bottom:3px; }
+.ach-card.locked .ach-name { color:var(–text3); }
+.ach-desc { font-size:10px; color:var(–text3); line-height:1.4; }
+.ach-req { font-size:10px; color:var(–blue2); margin-top:6px; font-weight:500; }
+.ach-card.locked .ach-req { color:var(–text3); }
+.ach-unlocked-badge {
+position:absolute; top:8px; right:8px;
+background:var(–gold); color:#000; font-size:8px; font-weight:700;
+padding:2px 6px; border-radius:6px; letter-spacing:0.5px; text-transform:uppercase;
 }
 
-/* ── TODAY DATE BANNER ── */
-.date-banner {
-font-family: ‘Playfair Display’, serif;
-font-size: 13px; color: var(–text3); margin-bottom: 16px; font-style: italic;
-}
+/* ── DATE BANNER ── */
+.date-banner { font-family:‘Playfair Display’,serif; font-size:13px; color:var(–text3); margin-bottom:16px; font-style:italic; }
 
 /* ── TOAST ── */
 .toast {
-position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%) translateY(20px);
-background: var(–card2); border: 1px solid var(–border);
-border-radius: 20px; padding: 10px 18px;
-font-size: 13px; color: var(–text);
-opacity: 0; transition: all 0.3s; z-index: 999; white-space: nowrap;
-pointer-events: none;
+position:fixed; bottom:90px; left:50%; transform:translateX(-50%) translateY(20px);
+background:var(–card2); border:1px solid var(–border);
+border-radius:20px; padding:10px 18px;
+font-size:13px; color:var(–text); opacity:0; transition:all 0.3s;
+z-index:999; white-space:nowrap; pointer-events:none;
 }
-.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 
-/* ── WORKOUT TOGGLE ── */
-.workout-card { background: var(–card); border: 1px solid var(–border); border-radius: 14px; overflow: hidden; }
-.workout-head {
-padding: 14px 16px; display: flex; align-items: center; gap: 12px;
-cursor: pointer; border-bottom: 1px solid var(–border);
+/* ── LEVEL UP OVERLAY ── */
+.levelup-overlay {
+position:fixed; inset:0; z-index:999;
+background:rgba(7,11,20,0.92);
+display:flex; align-items:center; justify-content:center;
+opacity:0; pointer-events:none; transition:opacity 0.3s;
 }
-.workout-head .wh-title { font-size: 15px; font-weight: 500; flex: 1; }
-.workout-head .wh-badge { font-size: 10px; color: var(–blue2); background: var(–blue-dim); padding: 3px 8px; border-radius: 8px; }
-.workout-head .wh-arrow { color: var(–text3); transition: transform 0.25s; }
-.workout-card.open .wh-arrow { transform: rotate(90deg); }
-.workout-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1); }
-.workout-card.open .workout-body { max-height: 3000px; }
-.workout-inner { padding: 16px; }
+.levelup-overlay.show { opacity:1; pointer-events:all; }
+.levelup-box {
+background:var(–card); border:1px solid rgba(96,165,250,0.4);
+border-radius:20px; padding:36px 28px; text-align:center;
+max-width:300px; width:90%;
+box-shadow:0 0 60px rgba(96,165,250,0.2);
+animation:popIn 0.4s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes popIn { from{transform:scale(0.8);opacity:0;} to{transform:scale(1);opacity:1;} }
+.lu-icon { font-size:52px; margin-bottom:12px; display:block; }
+.lu-title { font-family:‘Playfair Display’,serif; font-size:24px; color:var(–gold); margin-bottom:6px; }
+.lu-sub { font-size:14px; color:var(–text2); margin-bottom:20px; }
+.lu-btn {
+background:var(–blue); border:none; border-radius:10px;
+padding:12px 28px; color:white; font-family:‘DM Sans’,sans-serif;
+font-size:14px; font-weight:500; cursor:pointer;
+}
+
+/* ── ACH UNLOCK OVERLAY ── */
+.ach-overlay {
+position:fixed; inset:0; z-index:998;
+display:flex; align-items:flex-end; justify-content:center;
+pointer-events:none; padding-bottom:100px;
+}
+.ach-popup {
+background:linear-gradient(135deg,rgba(252,211,77,0.15),rgba(96,165,250,0.1));
+border:1px solid rgba(252,211,77,0.4);
+border-radius:16px; padding:16px 20px;
+display:flex; align-items:center; gap:14px;
+max-width:340px; width:90%;
+transform:translateY(80px); opacity:0;
+transition:all 0.4s cubic-bezier(.34,1.56,.64,1);
+pointer-events:none;
+}
+.ach-popup.show { transform:translateY(0); opacity:1; }
+.ach-popup-icon { font-size:32px; }
+.ach-popup-text { flex:1; }
+.ach-popup-title { font-size:11px; color:var(–gold); letter-spacing:1px; text-transform:uppercase; font-weight:600; margin-bottom:2px; }
+.ach-popup-name { font-size:15px; font-weight:500; color:var(–text); }
+.ach-popup-desc { font-size:11px; color:var(–text2); margin-top:2px; }
 </style>
 
 </head>
@@ -427,823 +408,499 @@ cursor: pointer; border-bottom: 1px solid var(–border);
   </div>
 </div>
 
-<!-- CONTENT -->
-
 <div class="content">
 
-  <!-- ═══════════════════════════════ TAB: VANDAAG ═══════════════════════════════ -->
+<!-- ═══ TAB: VANDAAG ═══ -->
 
-  <div class="tab-pane active" id="tab-vandaag">
+<div class="tab-pane active" id="tab-vandaag">
 
-```
-<div class="date-banner" id="dateBanner"></div>
+  <div class="date-banner" id="dateBanner"></div>
 
-<div class="level-section">
-  <div class="level-row">
-    <div>
-      <div class="level-title" id="levelTitle">Level 1</div>
-      <div class="level-sub" id="levelSub">0 / 50 XP</div>
+  <div class="level-section">
+    <div class="level-row">
+      <div>
+        <div class="level-title" id="levelTitle">Level 1 — Beginner</div>
+        <div class="level-sub" id="levelSub">0 / 50 XP naar volgend level</div>
+      </div>
+      <div style="font-size:24px" id="levelEmoji">🌱</div>
     </div>
-    <div style="font-size:22px">🏆</div>
-  </div>
-  <div class="level-track"><div class="level-fill" id="levelFill" style="width:0%"></div></div>
-</div>
-
-<div class="section">
-  <div class="section-label">Essentials</div>
-  <div class="card" style="border-radius:16px; overflow:hidden;">
-    <div class="check-item" onclick="toggleCheck(this,'2L water','5')" data-id="w1">
-      <div class="check-box">✓</div>
-      <div class="check-info"><div class="check-label">💧 2L water</div><div class="check-sub">Verdeeld over de dag</div></div>
-      <div class="check-xp">+5 XP</div>
-    </div>
-    <div class="check-item" onclick="toggleCheck(this,'Studeren','10')" data-id="w2">
-      <div class="check-box">✓</div>
-      <div class="check-info"><div class="check-label">📚 Studeren — min. 2 uur</div><div class="check-sub">iTheorie + criminologie</div></div>
-      <div class="check-xp">+10 XP</div>
-    </div>
-    <div class="check-item" onclick="toggleCheck(this,'Journal','5')" data-id="w3">
-      <div class="check-box">✓</div>
-      <div class="check-info"><div class="check-label">✍️ Journal ingevuld</div><div class="check-sub">Ochtend + avond</div></div>
-      <div class="check-xp">+5 XP</div>
-    </div>
-    <div class="check-item" onclick="toggleCheck(this,'Meditatie','5')" data-id="w4">
-      <div class="check-box">✓</div>
-      <div class="check-info"><div class="check-label">🧘 Meditatie — 10 min</div><div class="check-sub">Ademhaling, stilte, aanwezigheid</div></div>
-      <div class="check-xp">+5 XP</div>
-    </div>
-    <div class="check-item" onclick="toggleCheck(this,'Houding check','3')" data-id="w5">
-      <div class="check-box">✓</div>
-      <div class="check-info"><div class="check-label">🪞 Spiegel — 5 min Carolyn oefening</div><div class="check-sub">Rug, ogen, gezicht</div></div>
-      <div class="check-xp">+3 XP</div>
-    </div>
-    <div class="check-item" onclick="toggleCheck(this,'Mantra','2')" data-id="w6">
-      <div class="check-box">✓</div>
-      <div class="check-info"><div class="check-label">💬 Zeg hardop: "Ik ben genoeg"</div><div class="check-sub">Vóór je telefoon aanraakt</div></div>
-      <div class="check-xp">+2 XP</div>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <div class="section-label">Supplementen</div>
-  <div class="card">
-    <div class="supp-item" onclick="toggleSupp(this)" data-id="s1">
-      <div class="supp-dot"></div>
-      <div style="flex:1"><div class="supp-label">Omega 3</div><div class="supp-note">Met een maaltijd met vet</div></div>
-      <div class="check-xp">+2 XP</div>
-    </div>
-    <div class="supp-item" onclick="toggleSupp(this)" data-id="s2">
-      <div class="supp-dot"></div>
-      <div style="flex:1"><div class="supp-label">CoQ10</div><div class="supp-note">Niet nuchter innemen</div></div>
-      <div class="check-xp">+2 XP</div>
-    </div>
-    <div class="supp-item" onclick="toggleSupp(this)" data-id="s3">
-      <div class="supp-dot"></div>
-      <div style="flex:1"><div class="supp-label">Creatine</div><div class="supp-note">Dagelijks, zelfde tijd</div></div>
-      <div class="check-xp">+2 XP</div>
-    </div>
-    <div class="supp-item" onclick="toggleSupp(this)" data-id="s4">
-      <div class="supp-dot"></div>
-      <div style="flex:1"><div class="supp-label">Magnesium</div><div class="supp-note">'s Avonds, 30 min voor slaap</div></div>
-      <div class="check-xp">+2 XP</div>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <div class="section-label">Workout</div>
-  <div class="pill-row" style="padding:0 0 10px;">
-    <div class="pill" id="pillA" onclick="selectWorkout('A')">Workout A</div>
-    <div class="pill" id="pillB" onclick="selectWorkout('B')">Workout B</div>
+    <div class="level-track"><div class="level-fill" id="levelFill" style="width:0%"></div></div>
   </div>
 
-  <!-- WORKOUT A -->
-  <div class="workout-card" id="workoutA" style="display:none; margin-bottom:10px;">
-    <div class="workout-head" onclick="toggleWorkout('workoutA')">
-      <span style="font-size:18px">🏋️</span>
-      <span class="wh-title">Workout A — Upper Body</span>
-      <span class="wh-badge">~75 min</span>
-      <span class="wh-arrow">›</span>
-    </div>
-    <div class="workout-body">
-      <div class="workout-inner">
-
-        <div class="workout-phase">
-          <div class="phase-title">Warm-up — 10 min</div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Arm circles</div>
-              <div class="ex-detail">2 × 15 sec voorwaarts + 15 sec achterwaarts</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Shoulder rolls</div>
-              <div class="ex-detail">2 × 20 reps — langzaam en breed</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Band pull-aparts</div>
-              <div class="ex-detail">3 × 15 reps — materiaal: weerstandsband</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Cat-cow stretch</div>
-              <div class="ex-detail">2 × 10 reps — focus op wervelkolom</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="workout-phase">
-          <div class="phase-title">Compound — 25 min</div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Dumbbell Chest Press</div>
-              <div class="ex-detail">4 sets × 10 reps — rust 75 sec</div>
-              <div class="ex-tag">materiaal: dumbbells + bank</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Seated Dumbbell Shoulder Press</div>
-              <div class="ex-detail">4 sets × 10 reps — rust 60 sec</div>
-              <div class="ex-tag">materiaal: dumbbells + stoel</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Dumbbell Bent-Over Row</div>
-              <div class="ex-detail">4 sets × 12 reps — rust 60 sec</div>
-              <div class="ex-tag">materiaal: dumbbell, leun op bank</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="workout-phase">
-          <div class="phase-title">Isolatie — 20 min</div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Lateral Raises</div>
-              <div class="ex-detail">3 sets × 15 reps — rust 45 sec — licht gewicht</div>
-              <div class="ex-tag">materiaal: dumbbells</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Dumbbell Bicep Curls</div>
-              <div class="ex-detail">3 sets × 12 reps — rust 45 sec — supineer de pols bovenaan</div>
-              <div class="ex-tag">materiaal: dumbbells</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Tricep Overhead Extension</div>
-              <div class="ex-detail">3 sets × 12 reps — rust 45 sec</div>
-              <div class="ex-tag">materiaal: één dumbbell</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Face Pulls (band)</div>
-              <div class="ex-detail">3 sets × 15 reps — rust 45 sec — extern rotatie van schouder</div>
-              <div class="ex-tag">materiaal: weerstandsband</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Rear Delt Fly</div>
-              <div class="ex-detail">3 sets × 15 reps — rust 45 sec — voorover leunen</div>
-              <div class="ex-tag">materiaal: dumbbells</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="workout-phase">
-          <div class="phase-title">Core — 10 min</div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Dead Bug</div>
-              <div class="ex-detail">3 sets × 10 reps per kant — langzaam, gecontroleerd</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Plank</div>
-              <div class="ex-detail">3 × 30-45 seconden — bekken neutraal, core aanspannen</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Seated Ab Crunches (stoel)</div>
-              <div class="ex-detail">3 sets × 20 reps — rug recht, naar voren kantelen</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="workout-phase">
-          <div class="phase-title">Cool-down & Stretch — 10 min</div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info"><div class="ex-name">Chest doorway stretch</div><div class="ex-detail">2 × 30 seconden per kant</div></div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info"><div class="ex-name">Cross-body shoulder stretch</div><div class="ex-detail">2 × 30 seconden per arm</div></div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info"><div class="ex-name">Neck side stretch</div><div class="ex-detail">2 × 20 seconden per kant — zacht, geen druk</div></div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info"><div class="ex-name">Thoracic extension over stoel</div><div class="ex-detail">2 × 30 seconden — handen achter hoofd</div></div>
-          </div>
-        </div>
-
+  <div class="section">
+    <div class="section-label">Essentials</div>
+    <div class="card">
+      <div class="check-item" onclick="toggleCheck(this,'2L water',5)" data-id="w1">
+        <div class="check-box">✓</div>
+        <div class="check-info"><div class="check-label">💧 2L water</div><div class="check-sub">Verdeeld over de dag</div></div>
+        <div class="check-xp">+5 XP</div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this,'Studeren',10)" data-id="w2">
+        <div class="check-box">✓</div>
+        <div class="check-info"><div class="check-label">📚 Studeren — min. 2 uur</div><div class="check-sub">iTheorie + criminologie</div></div>
+        <div class="check-xp">+10 XP</div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this,'Journal',5)" data-id="w3">
+        <div class="check-box">✓</div>
+        <div class="check-info"><div class="check-label">✍️ Journal ingevuld</div><div class="check-sub">Ochtend + avond</div></div>
+        <div class="check-xp">+5 XP</div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this,'Meditatie',5)" data-id="w4">
+        <div class="check-box">✓</div>
+        <div class="check-info"><div class="check-label">🧘 Meditatie — 10 min</div><div class="check-sub">Ademhaling, stilte, aanwezigheid</div></div>
+        <div class="check-xp">+5 XP</div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this,'Carolyn spiegel',3)" data-id="w5">
+        <div class="check-box">✓</div>
+        <div class="check-info"><div class="check-label">🪞 Carolyn spiegel — 5 min</div><div class="check-sub">Rug, ogen, gezicht</div></div>
+        <div class="check-xp">+3 XP</div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this,'Mantra',2)" data-id="w6">
+        <div class="check-box">✓</div>
+        <div class="check-info"><div class="check-label">💬 "Ik ben genoeg" — hardop</div><div class="check-sub">Vóór je telefoon aanraakt</div></div>
+        <div class="check-xp">+2 XP</div>
       </div>
     </div>
   </div>
 
-  <!-- WORKOUT B -->
-  <div class="workout-card" id="workoutB" style="display:none;">
-    <div class="workout-head" onclick="toggleWorkout('workoutB')">
-      <span style="font-size:18px">💪</span>
-      <span class="wh-title">Workout B — Arms & Shoulders</span>
-      <span class="wh-badge">~70 min</span>
-      <span class="wh-arrow">›</span>
-    </div>
-    <div class="workout-body">
-      <div class="workout-inner">
-
-        <div class="workout-phase">
-          <div class="phase-title">Warm-up — 10 min</div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info"><div class="ex-name">Wrist circles</div><div class="ex-detail">2 × 20 reps beide richtingen</div></div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info"><div class="ex-name">Scapular push-ups</div><div class="ex-detail">2 × 12 reps — rug recht, schouderbladen bewegen</div></div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info"><div class="ex-name">Resistance band rows</div><div class="ex-detail">2 × 15 reps — licht gewicht</div></div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info"><div class="ex-name">Elbow circles</div><div class="ex-detail">2 × 15 reps beide richtingen</div></div>
-          </div>
-        </div>
-
-        <div class="workout-phase">
-          <div class="phase-title">Schouders — 25 min</div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Arnold Press</div>
-              <div class="ex-detail">4 sets × 10 reps — rust 75 sec — rotatie is essentieel</div>
-              <div class="ex-tag">materiaal: dumbbells</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Front Raises</div>
-              <div class="ex-detail">3 sets × 12 reps — rust 45 sec — armen niet hoger dan schouder</div>
-              <div class="ex-tag">materiaal: dumbbells</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Lateral Raises — drop set</div>
-              <div class="ex-detail">3 sets × 12+8 reps — geen rust, direct lichter gewicht</div>
-              <div class="ex-tag">materiaal: 2 paar dumbbells</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Upright Rows</div>
-              <div class="ex-detail">3 sets × 12 reps — rust 60 sec — ellebogen hoog</div>
-              <div class="ex-tag">materiaal: barbell of dumbbells</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="workout-phase">
-          <div class="phase-title">Armen — 20 min</div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Hammer Curls</div>
-              <div class="ex-detail">4 sets × 10 reps — rust 60 sec — neutrale grip</div>
-              <div class="ex-tag">materiaal: dumbbells</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Concentration Curls</div>
-              <div class="ex-detail">3 sets × 12 reps — rust 45 sec — elleboog op binnendij</div>
-              <div class="ex-tag">materiaal: dumbbell</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Skull Crushers</div>
-              <div class="ex-detail">3 sets × 12 reps — rust 60 sec — ellebogen gefixeerd</div>
-              <div class="ex-tag">materiaal: dumbbells of EZ bar</div>
-            </div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info">
-              <div class="ex-name">Tricep Kickbacks</div>
-              <div class="ex-detail">3 sets × 15 reps — rust 45 sec — arm volledig strekken</div>
-              <div class="ex-tag">materiaal: dumbbell</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="workout-phase">
-          <div class="phase-title">Core — 10 min</div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info"><div class="ex-name">Russian Twists (zittend)</div><div class="ex-detail">3 sets × 20 reps — gewicht optioneel</div></div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info"><div class="ex-name">Side Plank (op elleboog)</div><div class="ex-detail">3 × 25 sec per kant — heup omhoog</div></div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info"><div class="ex-name">Hollow Hold</div><div class="ex-detail">3 × 20 seconden — onderrug op de grond</div></div>
-          </div>
-        </div>
-
-        <div class="workout-phase">
-          <div class="phase-title">Cool-down & Stretch — 10 min</div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info"><div class="ex-name">Bicep wall stretch</div><div class="ex-detail">2 × 30 sec per arm — hand flat op muur, draai weg</div></div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info"><div class="ex-name">Tricep overhead stretch</div><div class="ex-detail">2 × 30 sec per arm</div></div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info"><div class="ex-name">Shoulder across chest stretch</div><div class="ex-detail">2 × 30 sec per arm</div></div>
-          </div>
-          <div class="exercise" onclick="toggleEx(this)">
-            <div class="ex-check">✓</div>
-            <div class="ex-info"><div class="ex-name">Child's pose (modified)</div><div class="ex-detail">1 × 45 seconden — armen uitgestrekt voor je</div></div>
-          </div>
-        </div>
-
+  <div class="section">
+    <div class="section-label">Supplementen</div>
+    <div class="card">
+      <div class="supp-item" onclick="toggleSupp(this,'Omega 3',2)" data-id="s1">
+        <div class="supp-dot"></div>
+        <div style="flex:1"><div class="supp-label">Omega 3</div><div class="supp-note">Met een maaltijd met vet</div></div>
+        <div class="check-xp">+2 XP</div>
+      </div>
+      <div class="supp-item" onclick="toggleSupp(this,'CoQ10',2)" data-id="s2">
+        <div class="supp-dot"></div>
+        <div style="flex:1"><div class="supp-label">CoQ10</div><div class="supp-note">Niet nuchter innemen</div></div>
+        <div class="check-xp">+2 XP</div>
+      </div>
+      <div class="supp-item" onclick="toggleSupp(this,'Creatine',2)" data-id="s3">
+        <div class="supp-dot"></div>
+        <div style="flex:1"><div class="supp-label">Creatine</div><div class="supp-note">Dagelijks, zelfde tijd</div></div>
+        <div class="check-xp">+2 XP</div>
+      </div>
+      <div class="supp-item" onclick="toggleSupp(this,'Magnesium',2)" data-id="s4">
+        <div class="supp-dot"></div>
+        <div style="flex:1"><div class="supp-label">Magnesium</div><div class="supp-note">'s Avonds, 30 min voor slaap</div></div>
+        <div class="check-xp">+2 XP</div>
       </div>
     </div>
   </div>
 
-  <!-- no workout selected message -->
-  <div id="noWorkout" style="text-align:center; padding:20px; color:var(--text3); font-size:13px; font-style:italic;">
-    Selecteer Workout A of B ↑
-  </div>
-
-</div>
-```
-
-  </div><!-- /vandaag -->
-
-  <!-- ═══════════════════════════════ TAB: CAROLYN ═══════════════════════════════ -->
-
-  <div class="tab-pane" id="tab-carolyn">
+  <div class="section">
+    <div class="section-label">Workout</div>
+    <div class="pill-row">
+      <div class="pill" id="pillA" onclick="selectWorkout('A')">Workout A</div>
+      <div class="pill" id="pillB" onclick="selectWorkout('B')">Workout B</div>
+    </div>
 
 ```
-<div class="cbk-hero">
-  <div class="cbk-quote">"Clothes don't wear her.<br>You see her aura immediately."</div>
-  <div class="cbk-attr">Sarah Pidgeon over Carolyn Bessette · Jouw referentie</div>
-</div>
-
-<div class="section-label" style="margin-bottom:10px;">Vóór je ergens naartoe gaat</div>
-<div class="rule-card" style="margin-bottom:16px; border-color:rgba(59,126,248,0.2); background:linear-gradient(135deg,rgba(59,126,248,0.06),transparent);">
-  <div style="padding:14px 16px">
-    <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue2);margin-bottom:10px;">SNELKAART</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-      <div style="font-size:13px;color:var(--text2)">— Rug recht</div>
-      <div style="font-size:13px;color:var(--text2)">— Ogen omhoog</div>
-      <div style="font-size:13px;color:var(--text2)">— Handen stil</div>
-      <div style="font-size:13px;color:var(--text2)">— Geen "sorry maar"</div>
-      <div style="font-size:13px;color:var(--text2)">— Pauze voor zin</div>
-      <div style="font-size:13px;color:var(--text2)">— Luister af</div>
+<div class="workout-card" id="workoutA" style="display:none">
+  <div class="workout-head" onclick="toggleWorkout('workoutA')">
+    <span style="font-size:18px">🏋️</span>
+    <span class="wh-title">Workout A — Upper Body</span>
+    <span class="wh-badge">~75 min</span>
+    <span class="wh-arrow">›</span>
+  </div>
+  <div class="workout-body"><div class="workout-inner">
+    <div class="workout-phase">
+      <div class="phase-title">Warm-up — 10 min</div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Arm circles</div><div class="ex-detail">2 × 15 sec voorwaarts + 15 sec achterwaarts</div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Shoulder rolls</div><div class="ex-detail">2 × 20 reps — langzaam en breed</div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Band pull-aparts</div><div class="ex-detail">3 × 15 reps<br><span class="ex-tag">weerstandsband</span></div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Cat-cow stretch</div><div class="ex-detail">2 × 10 reps — focus op wervelkolom</div></div></div>
     </div>
-    <div style="margin-top:12px;padding:10px;background:rgba(59,126,248,0.08);border-radius:8px;font-family:'Playfair Display',serif;font-size:14px;font-style:italic;color:var(--gold);text-align:center;">
-      "I am enough." — beslissing, niet gevoel
+    <div class="workout-phase">
+      <div class="phase-title">Compound — 25 min</div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Dumbbell Chest Press</div><div class="ex-detail">4 sets × 10 reps — rust 75 sec<br><span class="ex-tag">dumbbells + bank</span></div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Seated Shoulder Press</div><div class="ex-detail">4 sets × 10 reps — rust 60 sec<br><span class="ex-tag">dumbbells + stoel</span></div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Bent-Over Row</div><div class="ex-detail">4 sets × 12 reps — rust 60 sec<br><span class="ex-tag">dumbbell, leun op bank</span></div></div></div>
+    </div>
+    <div class="workout-phase">
+      <div class="phase-title">Isolatie — 20 min</div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Lateral Raises</div><div class="ex-detail">3 sets × 15 reps — rust 45 sec<br><span class="ex-tag">dumbbells</span></div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Bicep Curls</div><div class="ex-detail">3 sets × 12 reps — rust 45 sec — supineer de pols bovenaan<br><span class="ex-tag">dumbbells</span></div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Tricep Overhead Extension</div><div class="ex-detail">3 sets × 12 reps — rust 45 sec<br><span class="ex-tag">één dumbbell</span></div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Face Pulls</div><div class="ex-detail">3 sets × 15 reps — rust 45 sec<br><span class="ex-tag">weerstandsband</span></div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Rear Delt Fly</div><div class="ex-detail">3 sets × 15 reps — rust 45 sec — voorover leunen<br><span class="ex-tag">dumbbells</span></div></div></div>
+    </div>
+    <div class="workout-phase">
+      <div class="phase-title">Core — 10 min</div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Dead Bug</div><div class="ex-detail">3 sets × 10 reps per kant — langzaam, gecontroleerd</div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Plank</div><div class="ex-detail">3 × 30-45 seconden — bekken neutraal</div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Seated Ab Crunches</div><div class="ex-detail">3 sets × 20 reps — rug recht, naar voren kantelen</div></div></div>
+    </div>
+    <div class="workout-phase">
+      <div class="phase-title">Cool-down & Stretch — 10 min</div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Chest doorway stretch</div><div class="ex-detail">2 × 30 seconden per kant</div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Cross-body shoulder stretch</div><div class="ex-detail">2 × 30 seconden per arm</div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Neck side stretch</div><div class="ex-detail">2 × 20 seconden per kant — zacht, geen druk</div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Thoracic extension over stoel</div><div class="ex-detail">2 × 30 seconden — handen achter hoofd</div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<div class="workout-card" id="workoutB" style="display:none">
+  <div class="workout-head" onclick="toggleWorkout('workoutB')">
+    <span style="font-size:18px">💪</span>
+    <span class="wh-title">Workout B — Arms & Shoulders</span>
+    <span class="wh-badge">~70 min</span>
+    <span class="wh-arrow">›</span>
+  </div>
+  <div class="workout-body"><div class="workout-inner">
+    <div class="workout-phase">
+      <div class="phase-title">Warm-up — 10 min</div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Wrist circles</div><div class="ex-detail">2 × 20 reps beide richtingen</div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Scapular push-ups</div><div class="ex-detail">2 × 12 reps — rug recht, schouderbladen bewegen</div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Resistance band rows</div><div class="ex-detail">2 × 15 reps licht gewicht<br><span class="ex-tag">weerstandsband</span></div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Elbow circles</div><div class="ex-detail">2 × 15 reps beide richtingen</div></div></div>
+    </div>
+    <div class="workout-phase">
+      <div class="phase-title">Schouders — 25 min</div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Arnold Press</div><div class="ex-detail">4 sets × 10 reps — rust 75 sec — rotatie is essentieel<br><span class="ex-tag">dumbbells</span></div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Front Raises</div><div class="ex-detail">3 sets × 12 reps — rust 45 sec — niet hoger dan schouder<br><span class="ex-tag">dumbbells</span></div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Lateral Raises — drop set</div><div class="ex-detail">3 sets × 12+8 reps — geen rust, direct lichter gewicht<br><span class="ex-tag">2 paar dumbbells</span></div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Upright Rows</div><div class="ex-detail">3 sets × 12 reps — rust 60 sec — ellebogen hoog<br><span class="ex-tag">dumbbells of barbell</span></div></div></div>
+    </div>
+    <div class="workout-phase">
+      <div class="phase-title">Armen — 20 min</div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Hammer Curls</div><div class="ex-detail">4 sets × 10 reps — rust 60 sec — neutrale grip<br><span class="ex-tag">dumbbells</span></div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Concentration Curls</div><div class="ex-detail">3 sets × 12 reps — rust 45 sec — elleboog op binnendij<br><span class="ex-tag">dumbbell</span></div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Skull Crushers</div><div class="ex-detail">3 sets × 12 reps — rust 60 sec — ellebogen gefixeerd<br><span class="ex-tag">dumbbells of EZ bar</span></div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Tricep Kickbacks</div><div class="ex-detail">3 sets × 15 reps — rust 45 sec — arm volledig strekken<br><span class="ex-tag">dumbbell</span></div></div></div>
+    </div>
+    <div class="workout-phase">
+      <div class="phase-title">Core — 10 min</div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Russian Twists (zittend)</div><div class="ex-detail">3 sets × 20 reps — gewicht optioneel</div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Side Plank (op elleboog)</div><div class="ex-detail">3 × 25 sec per kant — heup omhoog</div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Hollow Hold</div><div class="ex-detail">3 × 20 seconden — onderrug op de grond</div></div></div>
+    </div>
+    <div class="workout-phase">
+      <div class="phase-title">Cool-down & Stretch — 10 min</div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Bicep wall stretch</div><div class="ex-detail">2 × 30 sec per arm — hand flat op muur, draai weg</div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Tricep overhead stretch</div><div class="ex-detail">2 × 30 sec per arm</div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Shoulder across chest stretch</div><div class="ex-detail">2 × 30 sec per arm</div></div></div>
+      <div class="exercise" onclick="toggleEx(this)"><div class="ex-check">✓</div><div class="ex-info"><div class="ex-name">Child's pose (modified)</div><div class="ex-detail">1 × 45 seconden — armen uitgestrekt voor je</div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<div id="noWorkout" style="text-align:center;padding:20px;color:var(--text3);font-size:13px;font-style:italic;">Selecteer Workout A of B ↑</div>
+```
+
+  </div>
+
+</div><!-- /vandaag -->
+
+<!-- ═══ TAB: CAROLYN ═══ -->
+
+<div class="tab-pane" id="tab-carolyn">
+  <div class="cbk-hero">
+    <div class="cbk-quote">"Clothes don't wear her.<br>You see her aura immediately."</div>
+    <div class="cbk-attr">Sarah Pidgeon over Carolyn Bessette · Jouw referentie</div>
+  </div>
+
+  <div class="section-label" style="margin-bottom:10px">Vóór je ergens naartoe gaat</div>
+  <div class="card" style="margin-bottom:16px">
+    <div style="padding:16px">
+      <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue2);margin-bottom:12px;font-weight:600">SNELKAART</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div style="font-size:13px;color:var(--text2)">— Rug recht</div>
+        <div style="font-size:13px;color:var(--text2)">— Ogen omhoog</div>
+        <div style="font-size:13px;color:var(--text2)">— Handen stil</div>
+        <div style="font-size:13px;color:var(--text2)">— Geen "sorry maar"</div>
+        <div style="font-size:13px;color:var(--text2)">— Pauze voor zin</div>
+        <div style="font-size:13px;color:var(--text2)">— Luister af</div>
+      </div>
+      <div style="margin-top:14px;padding:12px;background:rgba(252,211,77,0.07);border:1px solid rgba(252,211,77,0.2);border-radius:10px;font-family:'Playfair Display',serif;font-size:15px;font-style:italic;color:var(--gold);text-align:center">
+        "I am enough." — beslissing, niet gevoel
+      </div>
     </div>
   </div>
-</div>
 
-<div class="code-grid">
-  <div class="code-tile">
-    <div class="code-tile-icon">🦴</div>
-    <div class="code-tile-title">Lichaam</div>
-    <div class="code-tile-text">Rug recht, schouders los naar achteren en omlaag. Hoofd neutraal — kin parallel aan de grond.</div>
+  <div class="code-grid">
+    <div class="code-tile"><div class="code-tile-icon">🦴</div><div class="code-tile-title">Lichaam</div><div class="code-tile-text">Rug recht, schouders los naar achteren. Hoofd neutraal — kin parallel.</div></div>
+    <div class="code-tile"><div class="code-tile-icon">👁️</div><div class="code-tile-title">Ogen</div><div class="code-tile-text">Volledig aanwezig. Nooit naar de grond. Nooit in de lens van een camera.</div></div>
+    <div class="code-tile"><div class="code-tile-icon">🗣️</div><div class="code-tile-title">Stem</div><div class="code-tile-text">Direct. Geen excuses. Pauze vóór zinnen die tellen. Luister af.</div></div>
+    <div class="code-tile"><div class="code-tile-icon">🤲</div><div class="code-tile-title">Handen</div><div class="code-tile-text">Rustig en stil. Bewegen mee bij betrokkenheid. Geen friemelen.</div></div>
   </div>
-  <div class="code-tile">
-    <div class="code-tile-icon">👁️</div>
-    <div class="code-tile-title">Ogen</div>
-    <div class="code-tile-text">Volledig aanwezig in gesprek. Nooit naar de grond. Nooit in de lens van een camera.</div>
-  </div>
-  <div class="code-tile">
-    <div class="code-tile-icon">🗣️</div>
-    <div class="code-tile-title">Stem</div>
-    <div class="code-tile-text">Direct. Geen excuses. Pauze vóór zinnen die tellen. Luister af voor je reageert.</div>
-  </div>
-  <div class="code-tile">
-    <div class="code-tile-icon">🤲</div>
-    <div class="code-tile-title">Handen</div>
-    <div class="code-tile-text">Rustig en stil. Bewegen mee bij echte betrokkenheid. Geen friemelen.</div>
-  </div>
-</div>
 
-<div class="section-label" style="margin-bottom:10px;">Situaties</div>
+  <div class="section-label" style="margin-bottom:10px">Situaties</div>
 
-<div class="rule-card">
-  <div class="rule-header" onclick="toggleRule(this)">
-    <span class="rule-icon">🚪</span>
-    <span class="rule-title">Ergens binnenkomen</span>
-    <span class="rule-chevron">›</span>
-  </div>
-  <div class="rule-body">
-    <div class="rule-inner">
+  <div class="rule-card">
+    <div class="rule-header" onclick="toggleRule(this)">
+      <span class="rule-icon">🚪</span><span class="rule-title">Ergens binnenkomen</span><span class="rule-chevron">›</span>
+    </div>
+    <div class="rule-body"><div class="rule-inner">
       <div class="rule-row"><div class="rule-num">1</div><div>Vóór de deur: rug recht, ogen omhoog. Besluit <em>nu</em> dat je er thuishoort.</div></div>
-      <div class="rule-row"><div class="rule-num">2</div><div>Rijd intentioneel de ruimte in — niet snel, niet langzaam. Doelgericht.</div></div>
-      <div class="rule-row"><div class="rule-num">3</div><div>Stop één seconde. Neem de ruimte in met je blik. Waar zijn de mensen? Wat is jouw plek?</div></div>
-      <div class="rule-row"><div class="rule-num">4</div><div>Beweeg naar je plek. Als je er bent: stop volledig. Geen nerveus verschuiven.</div></div>
+      <div class="rule-row"><div class="rule-num">2</div><div>Rijd intentioneel de ruimte in — doelgericht, niet verontschuldigend.</div></div>
+      <div class="rule-row"><div class="rule-num">3</div><div>Stop één seconde. Neem de ruimte in met je blik.</div></div>
+      <div class="rule-row"><div class="rule-num">4</div><div>Beweeg naar je plek. Stop volledig — geen nerveus verschuiven.</div></div>
       <div class="rule-phrase">Onthoud: het verschil zit in de ogen. Ogen omhoog = alles verandert.</div>
-    </div>
+    </div></div>
   </div>
-</div>
 
-<div class="rule-card">
-  <div class="rule-header" onclick="toggleRule(this)">
-    <span class="rule-icon">💬</span>
-    <span class="rule-title">Mensen reageren op je rolstoel</span>
-    <span class="rule-chevron">›</span>
-  </div>
-  <div class="rule-body">
-    <div class="rule-inner">
-      <div class="rule-row"><div class="rule-num">1</div><div>Kijk ze rustig aan. Geen irritatie op je gezicht.</div></div>
+  <div class="rule-card">
+    <div class="rule-header" onclick="toggleRule(this)">
+      <span class="rule-icon">♿</span><span class="rule-title">Mensen reageren op je rolstoel</span><span class="rule-chevron">›</span>
+    </div>
+    <div class="rule-body"><div class="rule-inner">
+      <div class="rule-row"><div class="rule-num">1</div><div>Kijk ze rustig aan. Geen irritatie.</div></div>
       <div class="rule-row"><div class="rule-num">2</div><div>Bedank kort als ze willen helpen.</div></div>
       <div class="rule-phrase">"Dankjewel, ik red het."</div>
-      <div class="rule-row"><div class="rule-num">3</div><div>Ga direct verder met het gesprek — niet bij stilstaan.</div></div>
-      <div class="rule-row"><div class="rule-num">4</div><div>Ongemakkelijke vraag? Glimlach, pauze, dan:</div></div>
-      <div class="rule-phrase">"Dat is ingewikkeld. Maar vertel, hoe gaat het met jou?"</div>
-    </div>
+      <div class="rule-row"><div class="rule-num">3</div><div>Ga direct verder met het gesprek.</div></div>
+      <div class="rule-phrase">"Dat is ingewikkeld. Maar vertel — hoe gaat het met jou?"</div>
+    </div></div>
   </div>
-</div>
 
-<div class="rule-card">
-  <div class="rule-header" onclick="toggleRule(this)">
-    <span class="rule-icon">🛡️</span>
-    <span class="rule-title">Iemand maakt je kleiner</span>
-    <span class="rule-chevron">›</span>
-  </div>
-  <div class="rule-body">
-    <div class="rule-inner">
-      <div class="rule-row"><div class="rule-num">1</div><div><strong>Rug rechter.</strong> Automatisch, onmiddellijk. Dit is de eerste reactie.</div></div>
-      <div class="rule-row"><div class="rule-num">2</div><div>Kijk ze aan. Niet wegkijken, niet omlaag.</div></div>
-      <div class="rule-row"><div class="rule-num">3</div><div>Reageer kalm en kort — geen verdediging, geen emotie.</div></div>
+  <div class="rule-card">
+    <div class="rule-header" onclick="toggleRule(this)">
+      <span class="rule-icon">🛡️</span><span class="rule-title">Iemand maakt je kleiner</span><span class="rule-chevron">›</span>
+    </div>
+    <div class="rule-body"><div class="rule-inner">
+      <div class="rule-row"><div class="rule-num">1</div><div><strong>Rug rechter.</strong> Automatisch, onmiddellijk.</div></div>
+      <div class="rule-row"><div class="rule-num">2</div><div>Kijk ze aan — niet wegkijken.</div></div>
       <div class="rule-phrase">"Ik zie dat anders." of gewoon: "Nee."</div>
-      <div class="rule-row"><div class="rule-num">4</div><div>Ga verder alsof het niets was. Dat is de sterkste reactie.</div></div>
-    </div>
+      <div class="rule-row"><div class="rule-num">3</div><div>Ga verder alsof het niets was. Dat is de sterkste reactie.</div></div>
+    </div></div>
   </div>
-</div>
 
-<div class="rule-card">
-  <div class="rule-header" onclick="toggleRule(this)">
-    <span class="rule-icon">😰</span>
-    <span class="rule-title">Overweldigd of moe</span>
-    <span class="rule-chevron">›</span>
-  </div>
-  <div class="rule-body">
-    <div class="rule-inner">
-      <div class="rule-row"><div class="rule-num">1</div><div>Geef jezelf toestemming te vertrekken. Geen excuses nodig.</div></div>
+  <div class="rule-card">
+    <div class="rule-header" onclick="toggleRule(this)">
+      <span class="rule-icon">😰</span><span class="rule-title">Overweldigd of moe</span><span class="rule-chevron">›</span>
+    </div>
+    <div class="rule-body"><div class="rule-inner">
+      <div class="rule-row"><div class="rule-num">1</div><div>Geef jezelf toestemming te vertrekken. Geen excuses.</div></div>
       <div class="rule-phrase">"Ik ga nu, fijn je gezien te hebben."</div>
-      <div class="rule-row"><div class="rule-num">2</div><div>Zoek je vertrouwde anker — de persoon die je al bij je had.</div></div>
-      <div class="rule-row"><div class="rule-num">3</div><div>Jouw energie is kostbaar. Bescherm die.</div></div>
-    </div>
+      <div class="rule-row"><div class="rule-num">2</div><div>Jouw energie is kostbaar. Bescherm die.</div></div>
+    </div></div>
   </div>
-</div>
 
-<div class="rule-card">
-  <div class="rule-header" onclick="toggleRule(this)">
-    <span class="rule-icon">👤</span>
-    <span class="rule-title">Mensen van vroeger tegenkomen</span>
-    <span class="rule-chevron">›</span>
-  </div>
-  <div class="rule-body">
-    <div class="rule-inner">
+  <div class="rule-card">
+    <div class="rule-header" onclick="toggleRule(this)">
+      <span class="rule-icon">👤</span><span class="rule-title">Mensen van vroeger tegenkomen</span><span class="rule-chevron">›</span>
+    </div>
+    <div class="rule-body"><div class="rule-inner">
       <div class="rule-row"><div class="rule-num">1</div><div>Rug recht, ogen aan — jij neemt het eerste woord.</div></div>
       <div class="rule-phrase">"Hey, lang niet gezien."</div>
-      <div class="rule-row"><div class="rule-num">2</div><div>Zij voelen het ongemak meer dan jij. Jij bent er klaar voor.</div></div>
-      <div class="rule-row"><div class="rule-num">3</div><div>Je bent niet meer wie je was. Dat is geen zwakheid — dat is groei.</div></div>
-      <div class="rule-row"><div class="rule-num">4</div><div>Als het moeilijk voelt: pauze, adem, rug rechter. Dan door.</div></div>
-    </div>
+      <div class="rule-row"><div class="rule-num">2</div><div>Zij voelen het ongemak meer dan jij.</div></div>
+      <div class="rule-row"><div class="rule-num">3</div><div>Je bent niet meer wie je was. Dat is groei, geen zwakheid.</div></div>
+    </div></div>
   </div>
-</div>
 
-<div class="rule-card">
-  <div class="rule-header" onclick="toggleRule(this)">
-    <span class="rule-icon">📏</span>
-    <span class="rule-title">Hoogteverschil — iemand staat</span>
-    <span class="rule-chevron">›</span>
-  </div>
-  <div class="rule-body">
-    <div class="rule-inner">
-      <div class="rule-row"><div class="rule-num">1</div><div>Kijk omhoog — niet verlegen, niet verontschuldigend. Gewoon recht.</div></div>
-      <div class="rule-row"><div class="rule-num">2</div><div>Als het gesprek langer duurt:</div></div>
+  <div class="rule-card">
+    <div class="rule-header" onclick="toggleRule(this)">
+      <span class="rule-icon">📏</span><span class="rule-title">Hoogteverschil — iemand staat</span><span class="rule-chevron">›</span>
+    </div>
+    <div class="rule-body"><div class="rule-inner">
+      <div class="rule-row"><div class="rule-num">1</div><div>Kijk omhoog — niet verlegen, gewoon recht.</div></div>
+      <div class="rule-row"><div class="rule-num">2</div><div>Als gesprek langer duurt:</div></div>
       <div class="rule-phrase">"Ga zitten, het praat makkelijker."</div>
       <div class="rule-row"><div class="rule-num">3</div><div>Rug recht compenseert meer dan je denkt.</div></div>
+    </div></div>
+  </div>
+
+  <div class="section-label" style="margin:16px 0 10px">Dagelijkse training</div>
+  <div class="card">
+    <div class="check-item" onclick="toggleCheck(this,'CBK spiegel',3)" data-id="cbk1">
+      <div class="check-box">✓</div>
+      <div class="check-info"><div class="check-label">🪞 Spiegel — 5 minuten</div><div class="check-sub">Rug recht, ogen aanwezig, gezicht ontspannen</div></div>
+      <div class="check-xp">+3 XP</div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this,'CBK stem',2)" data-id="cbk2">
+      <div class="check-box">✓</div>
+      <div class="check-info"><div class="check-label">🗣️ Stem — 2 zinnen zonder excuses</div><div class="check-sub">Direct zeggen wat je wil zeggen</div></div>
+      <div class="check-xp">+2 XP</div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this,'CBK visualisatie',2)" data-id="cbk3">
+      <div class="check-box">✓</div>
+      <div class="check-info"><div class="check-label">🧠 Visualisatie — 2 minuten</div><div class="check-sub">Stel je voor hoe je een ruimte binnenkomt als Carolyn</div></div>
+      <div class="check-xp">+2 XP</div>
     </div>
   </div>
-</div>
+</div><!-- /carolyn -->
 
-<div class="section-label" style="margin:16px 0 10px;">Dagelijkse training</div>
-<div class="card">
-  <div class="check-item" onclick="toggleCheck(this,'CBK spiegel','3')" data-id="cbk1">
-    <div class="check-box">✓</div>
-    <div class="check-info"><div class="check-label">🪞 Spiegel — 5 minuten</div><div class="check-sub">Rug recht, ogen aanwezig, gezicht ontspannen</div></div>
-    <div class="check-xp">+3 XP</div>
-  </div>
-  <div class="check-item" onclick="toggleCheck(this,'CBK stem','2')" data-id="cbk2">
-    <div class="check-box">✓</div>
-    <div class="check-info"><div class="check-label">🗣️ Stem — 2 zinnen zonder excuses</div><div class="check-sub">Hardop zeggen: direct, zonder "sorry maar"</div></div>
-    <div class="check-xp">+2 XP</div>
-  </div>
-  <div class="check-item" onclick="toggleCheck(this,'CBK visualisatie','2')" data-id="cbk3">
-    <div class="check-box">✓</div>
-    <div class="check-info"><div class="check-label">🧠 Visualisatie — 2 minuten</div><div class="check-sub">Stel je voor hoe je een ruimte binnenkomt als Carolyn</div></div>
-    <div class="check-xp">+2 XP</div>
-  </div>
-</div>
-```
+<!-- ═══ TAB: JOURNAL ═══ -->
 
-  </div><!-- /carolyn -->
+<div class="tab-pane" id="tab-journal">
+  <div class="journal-date" id="journalDate"></div>
+  <div class="journal-block">
+    <div class="journal-block-header"><div class="jb-title">☀️ Ochtend</div></div>
+    <div class="journal-prompt"><div class="jp-q">Hoe voel ik me vandaag — lichaam en hoofd?</div><textarea class="jp-input" rows="3" placeholder="Schrijf eerlijk..." data-jkey="j_o1" oninput="saveJournal(this)"></textarea></div>
+    <div class="journal-prompt"><div class="jp-q">Wat wil ik vandaag bereiken?</div><textarea class="jp-input" rows="2" placeholder="Één ding is genoeg..." data-jkey="j_o2" oninput="saveJournal(this)"></textarea></div>
+    <div class="journal-prompt"><div class="jp-q">Waar ben ik dankbaar voor?</div><textarea class="jp-input" rows="2" placeholder="Hoe klein ook..." data-jkey="j_o3" oninput="saveJournal(this)"></textarea></div>
+  </div>
+  <div class="journal-block">
+    <div class="journal-block-header"><div class="jb-title">🌙 Avond</div></div>
+    <div class="journal-prompt"><div class="jp-q">Wat heb ik vandaag gedaan?</div><textarea class="jp-input" rows="3" placeholder="Geen oordeel — gewoon wat er was..." data-jkey="j_a1" oninput="saveJournal(this)"></textarea></div>
+    <div class="journal-prompt"><div class="jp-q">Wat ging goed vandaag?</div><textarea class="jp-input" rows="2" placeholder="Hoe klein ook — benoem het..." data-jkey="j_a2" oninput="saveJournal(this)"></textarea></div>
+    <div class="journal-prompt"><div class="jp-q">Wat kan beter morgen?</div><textarea class="jp-input" rows="2" placeholder="Eén ding..." data-jkey="j_a3" oninput="saveJournal(this)"></textarea></div>
+  </div>
+  <div class="journal-block">
+    <div class="journal-block-header"><div class="jb-title">💭 Diep</div></div>
+    <div class="journal-prompt"><div class="jp-q">Wie wil ik worden — niet wat bereiken, maar wie zijn?</div><textarea class="jp-input" rows="4" placeholder="Schrijf zonder filter..." data-jkey="j_d1" oninput="saveJournal(this)"></textarea></div>
+    <div class="journal-prompt"><div class="jp-q">Wat houdt me tegen?</div><textarea class="jp-input" rows="3" placeholder="Eerlijk..." data-jkey="j_d2" oninput="saveJournal(this)"></textarea></div>
+    <div class="journal-prompt"><div class="jp-q">Wat zou mijn beste versie vandaag gedaan hebben?</div><textarea class="jp-input" rows="3" placeholder="Concrete acties..." data-jkey="j_d3" oninput="saveJournal(this)"></textarea></div>
+  </div>
+</div><!-- /journal -->
 
-  <!-- ═══════════════════════════════ TAB: JOURNAL ═══════════════════════════════ -->
+<!-- ═══ TAB: MEALS ═══ -->
 
-  <div class="tab-pane" id="tab-journal">
-
-```
-<div class="journal-date" id="journalDate"></div>
-
-<div class="journal-block">
-  <div class="journal-block-header"><div class="journal-block-title">☀️ Ochtend</div></div>
-  <div class="journal-prompt">
-    <div class="jp-q">Hoe voel ik me vandaag — lichaam en hoofd?</div>
-    <textarea class="jp-input" rows="3" placeholder="Schrijf eerlijk..." data-jkey="j_ochtend1" oninput="saveJournal(this)"></textarea>
+<div class="tab-pane" id="tab-meals">
+  <div class="macro-row">
+    <div class="macro-tile"><div class="macro-label">Kcal</div><div class="macro-val" id="mKcal" style="color:var(--blue2)">0</div><div style="font-size:9px;color:var(--text3);margin-bottom:6px">/ 1200</div><div class="macro-bar"><div class="macro-bar-fill" id="bKcal" style="background:var(--blue);width:0%"></div></div></div>
+    <div class="macro-tile"><div class="macro-label">Eiwit</div><div class="macro-val" id="mProt" style="color:var(--green)">0g</div><div style="font-size:9px;color:var(--text3);margin-bottom:6px">/ 100g</div><div class="macro-bar"><div class="macro-bar-fill" id="bProt" style="background:var(--green);width:0%"></div></div></div>
+    <div class="macro-tile"><div class="macro-label">Carbs</div><div class="macro-val" id="mCarb" style="color:var(--yellow)">0g</div><div style="font-size:9px;color:var(--text3);margin-bottom:6px">/ 100g</div><div class="macro-bar"><div class="macro-bar-fill" id="bCarb" style="background:var(--yellow);width:0%"></div></div></div>
+    <div class="macro-tile"><div class="macro-label">Vet</div><div class="macro-val" id="mVet" style="color:var(--red)">0g</div><div style="font-size:9px;color:var(--text3);margin-bottom:6px">/ 40g</div><div class="macro-bar"><div class="macro-bar-fill" id="bVet" style="background:var(--red);width:0%"></div></div></div>
   </div>
-  <div class="journal-prompt">
-    <div class="jp-q">Wat wil ik vandaag bereiken?</div>
-    <textarea class="jp-input" rows="2" placeholder="Één ding is genoeg..." data-jkey="j_ochtend2" oninput="saveJournal(this)"></textarea>
-  </div>
-  <div class="journal-prompt">
-    <div class="jp-q">Waar ben ik dankbaar voor?</div>
-    <textarea class="jp-input" rows="2" placeholder="Hoe klein ook..." data-jkey="j_ochtend3" oninput="saveJournal(this)"></textarea>
-  </div>
-</div>
-
-<div class="journal-block">
-  <div class="journal-block-header"><div class="journal-block-title">🌙 Avond</div></div>
-  <div class="journal-prompt">
-    <div class="jp-q">Wat heb ik vandaag gedaan?</div>
-    <textarea class="jp-input" rows="3" placeholder="Geen oordeel — gewoon wat er was..." data-jkey="j_avond1" oninput="saveJournal(this)"></textarea>
-  </div>
-  <div class="journal-prompt">
-    <div class="jp-q">Wat ging goed vandaag?</div>
-    <textarea class="jp-input" rows="2" placeholder="Hoe klein ook — benoem het..." data-jkey="j_avond2" oninput="saveJournal(this)"></textarea>
-  </div>
-  <div class="journal-prompt">
-    <div class="jp-q">Wat kan beter morgen?</div>
-    <textarea class="jp-input" rows="2" placeholder="Eén ding..." data-jkey="j_avond3" oninput="saveJournal(this)"></textarea>
-  </div>
-</div>
-
-<div class="journal-block">
-  <div class="journal-block-header"><div class="journal-block-title">💭 Diep</div></div>
-  <div class="journal-prompt">
-    <div class="jp-q">Wie wil ik worden — niet wat bereiken, maar wie zijn?</div>
-    <textarea class="jp-input" rows="4" placeholder="Schrijf zonder filter..." data-jkey="j_diep1" oninput="saveJournal(this)"></textarea>
-  </div>
-  <div class="journal-prompt">
-    <div class="jp-q">Wat houdt me tegen?</div>
-    <textarea class="jp-input" rows="3" placeholder="Eerlijk..." data-jkey="j_diep2" oninput="saveJournal(this)"></textarea>
-  </div>
-  <div class="journal-prompt">
-    <div class="jp-q">Wat zou mijn beste versie vandaag gedaan hebben?</div>
-    <textarea class="jp-input" rows="3" placeholder="Concrete acties..." data-jkey="j_diep3" oninput="saveJournal(this)"></textarea>
-  </div>
-</div>
-```
-
-  </div><!-- /journal -->
-
-  <!-- ═══════════════════════════════ TAB: MEALS ═══════════════════════════════ -->
-
-  <div class="tab-pane" id="tab-meals">
-
-```
-<div class="macro-row">
-  <div class="macro-tile">
-    <div class="macro-label">Kcal</div>
-    <div class="macro-val" id="mKcal" style="color:var(--blue2)">0</div>
-    <div style="font-size:9px;color:var(--text3);margin-bottom:6px;">/ 1200</div>
-    <div class="macro-bar"><div class="macro-bar-fill" id="bKcal" style="background:var(--blue);width:0%"></div></div>
-  </div>
-  <div class="macro-tile">
-    <div class="macro-label">Proteïne</div>
-    <div class="macro-val" id="mProt" style="color:var(--green)">0g</div>
-    <div style="font-size:9px;color:var(--text3);margin-bottom:6px;">/ 100g</div>
-    <div class="macro-bar"><div class="macro-bar-fill" id="bProt" style="background:var(--green);width:0%"></div></div>
-  </div>
-  <div class="macro-tile">
-    <div class="macro-label">Carbs</div>
-    <div class="macro-val" id="mCarb" style="color:var(--yellow)">0g</div>
-    <div style="font-size:9px;color:var(--text3);margin-bottom:6px;">/ 100g</div>
-    <div class="macro-bar"><div class="macro-bar-fill" id="bCarb" style="background:var(--yellow);width:0%"></div></div>
-  </div>
-  <div class="macro-tile">
-    <div class="macro-label">Vet</div>
-    <div class="macro-val" id="mVet" style="color:var(--red)">0g</div>
-    <div style="font-size:9px;color:var(--text3);margin-bottom:6px;">/ 40g</div>
-    <div class="macro-bar"><div class="macro-bar-fill" id="bVet" style="background:var(--red);width:0%"></div></div>
-  </div>
-</div>
-
-<div class="meal-form">
-  <div class="form-title">Voedsel toevoegen</div>
-  <div class="form-grid">
-    <div class="form-field full">
-      <div class="field-label">Naam</div>
-      <input class="field-input" type="text" id="mNaam" placeholder="bijv. Griekse yoghurt">
+  <div class="meal-form">
+    <div class="form-title">Voedsel toevoegen</div>
+    <div class="form-grid">
+      <div class="form-field full"><div class="field-label">Naam</div><input class="field-input" type="text" id="mNaam" placeholder="bijv. Griekse yoghurt"></div>
+      <div class="form-field"><div class="field-label">Kcal</div><input class="field-input" type="number" id="mKcalIn" placeholder="0"></div>
+      <div class="form-field"><div class="field-label">Eiwit (g)</div><input class="field-input" type="number" id="mProtIn" placeholder="0"></div>
+      <div class="form-field"><div class="field-label">Carbs (g)</div><input class="field-input" type="number" id="mCarbIn" placeholder="0"></div>
+      <div class="form-field"><div class="field-label">Vet (g)</div><input class="field-input" type="number" id="mVetIn" placeholder="0"></div>
     </div>
-    <div class="form-field">
-      <div class="field-label">Kcal</div>
-      <input class="field-input" type="number" id="mKcalIn" placeholder="0">
-    </div>
-    <div class="form-field">
-      <div class="field-label">Proteïne (g)</div>
-      <input class="field-input" type="number" id="mProtIn" placeholder="0">
-    </div>
-    <div class="form-field">
-      <div class="field-label">Carbs (g)</div>
-      <input class="field-input" type="number" id="mCarbIn" placeholder="0">
-    </div>
-    <div class="form-field">
-      <div class="field-label">Vet (g)</div>
-      <input class="field-input" type="number" id="mVetIn" placeholder="0">
+    <button class="add-btn" onclick="addMeal()">+ Toevoegen</button>
+  </div>
+  <div id="mealList"></div>
+</div><!-- /meals -->
+
+<!-- ═══ TAB: STATS ═══ -->
+
+<div class="tab-pane" id="tab-stats">
+  <div class="stats-overview">
+    <div class="stat-tile"><div class="stat-num" id="sStreak" style="color:var(--gold)">0</div><div class="stat-lbl">🔥 Streak</div></div>
+    <div class="stat-tile"><div class="stat-num" id="sXP" style="color:var(--blue2)">0</div><div class="stat-lbl">⚡ Totaal XP</div></div>
+    <div class="stat-tile"><div class="stat-num" id="sLevel" style="color:var(--green)">1</div><div class="stat-lbl">🏆 Level</div></div>
+  </div>
+
+  <div class="week-chart">
+    <div class="chart-title">Laatste 7 dagen — voltooiing %</div>
+    <div class="chart-bars" id="chartBars"></div>
+    <div style="display:flex;gap:6px" id="chartDays"></div>
+  </div>
+
+  <div class="stats-overview">
+    <div class="stat-tile"><div class="stat-num" id="sAvg" style="color:var(--blue2)">0%</div><div class="stat-lbl">Gemiddelde</div></div>
+    <div class="stat-tile"><div class="stat-num" id="sBest" style="color:var(--green)">0%</div><div class="stat-lbl">Beste dag</div></div>
+  </div>
+
+  <div class="interp-card" style="margin-bottom:20px">
+    <div class="interp-label">Interpretatie</div>
+    <div class="interp-text" id="sInterp">Begin vandaag. Elke vink telt.</div>
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+
+  <div class="section-label" style="margin-bottom:12px">Achievements</div>
+  <div class="ach-grid" id="achGrid"></div>
+
+  <div style="margin-top:14px;padding:14px;background:var(--card);border:1px solid var(--border);border-radius:12px">
+    <div style="font-size:10px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Legenda</div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2)"><div style="width:12px;height:12px;border-radius:3px;background:var(--green)"></div>70%+ Goed</div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2)"><div style="width:12px;height:12px;border-radius:3px;background:var(--yellow)"></div>40–69% Matig</div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2)"><div style="width:12px;height:12px;border-radius:3px;background:var(--red)"></div>&lt;40% Laag</div>
     </div>
   </div>
-  <button class="add-btn" onclick="addMeal()">+ Toevoegen</button>
-</div>
-
-<div class="meal-list" id="mealList"></div>
-```
-
-  </div><!-- /meals -->
-
-  <!-- ═══════════════════════════════ TAB: STATS ═══════════════════════════════ -->
-
-  <div class="tab-pane" id="tab-stats">
-
-```
-<div class="stats-overview">
-  <div class="stat-tile">
-    <div class="stat-num" id="sStreak" style="color:var(--gold)">0</div>
-    <div class="stat-lbl">🔥 Streak</div>
-  </div>
-  <div class="stat-tile">
-    <div class="stat-num" id="sXP" style="color:var(--blue2)">0</div>
-    <div class="stat-lbl">⚡ Totaal XP</div>
-  </div>
-  <div class="stat-tile">
-    <div class="stat-num" id="sLevel" style="color:var(--green)">1</div>
-    <div class="stat-lbl">🏆 Level</div>
-  </div>
-</div>
-
-<div class="week-chart">
-  <div class="chart-title">Laatste 7 dagen — completion %</div>
-  <div class="chart-bars" id="chartBars"></div>
-  <div style="display:flex;gap:6px" id="chartDays"></div>
-</div>
-
-<div class="stats-overview" style="margin-bottom:14px;">
-  <div class="stat-tile">
-    <div class="stat-num" id="sAvg" style="color:var(--blue2)">0%</div>
-    <div class="stat-lbl">Gemiddelde</div>
-  </div>
-  <div class="stat-tile">
-    <div class="stat-num" id="sBest" style="color:var(--green)">0%</div>
-    <div class="stat-lbl">Beste dag</div>
-  </div>
-</div>
-
-<div class="interp-card">
-  <div class="interp-label">Interpretatie</div>
-  <div class="interp-text" id="sInterp">Begin vandaag. Elke vink telt.</div>
-</div>
-
-<div style="margin-top:14px; padding:14px;background:var(--card);border:1px solid var(--border);border-radius:12px;">
-  <div style="font-size:10px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Legenda</div>
-  <div style="display:flex;gap:16px;flex-wrap:wrap;">
-    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2)"><div style="width:12px;height:12px;border-radius:3px;background:var(--green)"></div>70%+ Goed</div>
-    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2)"><div style="width:12px;height:12px;border-radius:3px;background:var(--yellow)"></div>40–69% Matig</div>
-    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2)"><div style="width:12px;height:12px;border-radius:3px;background:var(--red)"></div>&lt;40% Laag</div>
-  </div>
-</div>
-```
-
-  </div><!-- /stats -->
+</div><!-- /stats -->
 
 </div><!-- /content -->
 
 <!-- NAV -->
 
 <nav class="nav">
-  <button class="nav-btn active" onclick="switchTab('vandaag',this)">
-    <span class="nav-icon">☀️</span><span class="nav-label">Vandaag</span>
-  </button>
-  <button class="nav-btn" onclick="switchTab('carolyn',this)">
-    <span class="nav-icon">🤍</span><span class="nav-label">Carolyn</span>
-  </button>
-  <button class="nav-btn" onclick="switchTab('journal',this)">
-    <span class="nav-icon">✍️</span><span class="nav-label">Journal</span>
-  </button>
-  <button class="nav-btn" onclick="switchTab('meals',this)">
-    <span class="nav-icon">🥗</span><span class="nav-label">Meals</span>
-  </button>
-  <button class="nav-btn" onclick="switchTab('stats',this)">
-    <span class="nav-icon">📊</span><span class="nav-label">Stats</span>
-  </button>
+  <button class="nav-btn active" onclick="switchTab('vandaag',this)"><span class="nav-icon">☀️</span><span class="nav-label">Vandaag</span></button>
+  <button class="nav-btn" onclick="switchTab('carolyn',this)"><span class="nav-icon">🤍</span><span class="nav-label">Carolyn</span></button>
+  <button class="nav-btn" onclick="switchTab('journal',this)"><span class="nav-icon">✍️</span><span class="nav-label">Journal</span></button>
+  <button class="nav-btn" onclick="switchTab('meals',this)"><span class="nav-icon">🥗</span><span class="nav-label">Meals</span></button>
+  <button class="nav-btn" onclick="switchTab('stats',this)"><span class="nav-icon">📊</span><span class="nav-label">Stats</span></button>
 </nav>
+
+<!-- TOAST -->
 
 <div class="toast" id="toast"></div>
 
+<!-- LEVEL UP OVERLAY -->
+
+<div class="levelup-overlay" id="luOverlay">
+  <div class="levelup-box">
+    <span class="lu-icon" id="luIcon">🏆</span>
+    <div class="lu-title" id="luTitle">Level Up!</div>
+    <div class="lu-sub" id="luSub">Je bent nu Level 2</div>
+    <button class="lu-btn" onclick="closeLevelUp()">Doorgaan 🚀</button>
+  </div>
+</div>
+
+<!-- ACHIEVEMENT POPUP -->
+
+<div class="ach-overlay" id="achOverlay">
+  <div class="ach-popup" id="achPopup">
+    <div class="ach-popup-icon" id="achPopIcon">🏅</div>
+    <div class="ach-popup-text">
+      <div class="ach-popup-title">Achievement unlocked!</div>
+      <div class="ach-popup-name" id="achPopName">Badge naam</div>
+      <div class="ach-popup-desc" id="achPopDesc">Beschrijving</div>
+    </div>
+  </div>
+</div>
+
 <script>
-// ══════════════════════════════════════════
-// CORE STATE
-// ══════════════════════════════════════════
+// ══════════════════════════════════════════════════════════
+// ACHIEVEMENTS DEFINITIE
+// ══════════════════════════════════════════════════════════
+const ACHIEVEMENTS = [
+  { id:'ach_first',   icon:'🌱', name:'Eerste stap',     desc:'Eerste taak afgevinkt',          req:'xp', val:1    },
+  { id:'ach_10xp',    icon:'⚡', name:'Vonk',            desc:'10 XP verdiend',                  req:'xp', val:10   },
+  { id:'ach_50xp',    icon:'🔥', name:'Op stoom',        desc:'50 XP verdiend',                  req:'xp', val:50   },
+  { id:'ach_100xp',   icon:'💎', name:'Gedisciplineerd', desc:'100 XP verdiend',                 req:'xp', val:100  },
+  { id:'ach_250xp',   icon:'👑', name:'Toewijding',      desc:'250 XP verdiend',                 req:'xp', val:250  },
+  { id:'ach_500xp',   icon:'🏆', name:'Elite',           desc:'500 XP verdiend',                 req:'xp', val:500  },
+  { id:'ach_streak3', icon:'🔥', name:'3 dagen',         desc:'3 dagen op rij actief',           req:'streak', val:3  },
+  { id:'ach_streak7', icon:'📅', name:'Week gemaakt',    desc:'7 dagen streak',                  req:'streak', val:7  },
+  { id:'ach_streak14',icon:'🌟', name:'2 weken',         desc:'14 dagen streak',                 req:'streak', val:14 },
+  { id:'ach_streak30',icon:'🏅', name:'Maand champion',  desc:'30 dagen streak',                 req:'streak', val:30 },
+  { id:'ach_cbk',     icon:'🤍', name:'Carolyn-modus',   desc:'Alle Carolyn oefeningen gedaan',  req:'special', val:'cbk_done' },
+  { id:'ach_workout', icon:'💪', name:'Workout warrior', desc:'Eerste volledige workout afgevinkt', req:'special', val:'workout_done' },
+  { id:'ach_journal', icon:'📓', name:'Schrijver',       desc:'Journal 3 dagen ingevuld',        req:'special', val:'journal3' },
+  { id:'ach_supp',    icon:'💊', name:'Protocol',        desc:'Alle supplementen op één dag',    req:'special', val:'supp_done' },
+  { id:'ach_perfect', icon:'⭐', name:'Perfecte dag',    desc:'100% voltooiing op één dag',      req:'special', val:'perfect_day' },
+  { id:'ach_lvl5',    icon:'🚀', name:'Level 5',         desc:'Level 5 bereikt',                 req:'level', val:5  },
+];
 
-const dateKey = () => new Date().toISOString().slice(0,10);
-const weekKey = (offset=0) => { const d=new Date(); d.setDate(d.getDate()-offset); return d.toISOString().slice(0,10); };
-const DAYS = ['Zo','Ma','Di','Wo','Do','Vr','Za'];
-const MONTHS = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+// ══════════════════════════════════════════════════════════
+// LEVEL NAMEN
+// ══════════════════════════════════════════════════════════
+const LEVEL_NAMES = [
+  '', 'Beginner','Bewust','Gedisciplineerd','Gefocust','Vastberaden',
+  'Consistent','Krachtig','Doelgericht','Elite','Meester'
+];
+const LEVEL_EMOJIS = ['','🌱','🌿','🌳','💫','⚡','🔥','💎','👑','🏆','🌟'];
 
-function getState() {
-  try { return JSON.parse(localStorage.getItem('ms_state_'+dateKey()) || '{}'); } catch { return {}; }
-}
-function saveState(s) {
-  localStorage.setItem('ms_state_'+dateKey(), JSON.stringify(s));
-}
-function getGlobal() {
-  try { return JSON.parse(localStorage.getItem('ms_global') || '{"xp":0,"streak":0,"lastActive":"","level":1}'); } catch { return {xp:0,streak:0,lastActive:'',level:1}; }
-}
-function saveGlobal(g) { localStorage.setItem('ms_global', JSON.stringify(g)); }
-function getMeals() {
-  try { return JSON.parse(localStorage.getItem('ms_meals_'+dateKey()) || '[]'); } catch { return []; }
-}
-function saveMeals(m) { localStorage.setItem('ms_meals_'+dateKey(), JSON.stringify(m)); }
-function getJournal() {
-  try { return JSON.parse(localStorage.getItem('ms_journal_'+dateKey()) || '{}'); } catch { return {}; }
-}
-function saveJournalData(j) { localStorage.setItem('ms_journal_'+dateKey(), JSON.stringify(j)); }
+// ══════════════════════════════════════════════════════════
+// STATE HELPERS
+// ══════════════════════════════════════════════════════════
+const dk = () => new Date().toISOString().slice(0,10);
+const dayOffset = n => { const d=new Date(); d.setDate(d.getDate()-n); return d.toISOString().slice(0,10); };
+const DAYS_NL = ['Zo','Ma','Di','Wo','Do','Vr','Za'];
+const MONTHS_NL = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
 
-// ══════════════════════════════════════════
+const getState  = () => { try { return JSON.parse(localStorage.getItem('ms2_state_'+dk())||'{}'); } catch { return {}; } };
+const saveState = s  => localStorage.setItem('ms2_state_'+dk(), JSON.stringify(s));
+const getG      = () => { try { return JSON.parse(localStorage.getItem('ms2_global')||'{"xp":0,"streak":0,"lastActive":"","level":1,"unlocked":[]}'); } catch { return {xp:0,streak:0,lastActive:'',level:1,unlocked:[]}; } };
+const saveG     = g  => localStorage.setItem('ms2_global', JSON.stringify(g));
+const getMeals  = () => { try { return JSON.parse(localStorage.getItem('ms2_meals_'+dk())||'[]'); } catch { return []; } };
+const saveMeals = m  => localStorage.setItem('ms2_meals_'+dk(), JSON.stringify(m));
+const getJournal= () => { try { return JSON.parse(localStorage.getItem('ms2_journal_'+dk())||'{}'); } catch { return {}; } };
+const saveJD    = j  => localStorage.setItem('ms2_journal_'+dk(), JSON.stringify(j));
+
+// ══════════════════════════════════════════════════════════
 // TABS
-// ══════════════════════════════════════════
-
+// ══════════════════════════════════════════════════════════
 function switchTab(id, el) {
   document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
@@ -1253,299 +910,368 @@ function switchTab(id, el) {
   if(id==='stats') renderStats();
 }
 
-// ══════════════════════════════════════════
-// CHECK ITEMS
-// ══════════════════════════════════════════
-
-function toggleCheck(el, name, xpVal) {
+// ══════════════════════════════════════════════════════════
+// CHECKBOXES
+// ══════════════════════════════════════════════════════════
+function toggleCheck(el, name, xp) {
   const state = getState();
   const id = el.dataset.id;
-  const wasDone = el.classList.contains('done');
+  const was = el.classList.contains('done');
   el.classList.toggle('done');
-  const g = getGlobal();
-
-  if(!wasDone) {
-    state[id] = true;
-    g.xp = (g.xp||0) + parseInt(xpVal);
-    showToast('+'+xpVal+' XP — '+name+' ✓');
+  const g = getG();
+  if(!was) {
+    state[id]=true;
+    const oldXP = g.xp||0;
+    g.xp = oldXP + xp;
+    showToast('+'+xp+' XP — '+name+' ✓');
+    saveState(state); saveG(g);
+    checkLevelUp(oldXP, g.xp, g);
+    checkAchievements(g, state);
   } else {
     delete state[id];
-    g.xp = Math.max(0, (g.xp||0) - parseInt(xpVal));
+    g.xp = Math.max(0,(g.xp||0)-xp);
+    saveState(state); saveG(g);
   }
-  saveState(state); saveGlobal(g);
-  updateProgress(); updateXP();
+  updateProgress(); updateXPDisplay();
 }
 
-function toggleSupp(el) {
-  const wasDone = el.classList.contains('done');
+function toggleSupp(el, name, xp) {
+  const was = el.classList.contains('done');
   el.classList.toggle('done');
   const state = getState();
   const id = el.dataset.id;
-  const g = getGlobal();
-  if(!wasDone) { state[id]=true; g.xp=(g.xp||0)+2; showToast('+2 XP — Supplement ✓'); }
-  else { delete state[id]; g.xp=Math.max(0,(g.xp||0)-2); }
-  saveState(state); saveGlobal(g);
-  updateProgress(); updateXP();
+  const g = getG();
+  if(!was) {
+    state[id]=true;
+    const oldXP = g.xp||0;
+    g.xp = oldXP+xp;
+    showToast('+'+xp+' XP — '+name+' ✓');
+    saveState(state); saveG(g);
+    checkLevelUp(oldXP,g.xp,g);
+    checkAchievements(g,state);
+  } else {
+    delete state[id];
+    g.xp=Math.max(0,(g.xp||0)-xp);
+    saveState(state); saveG(g);
+  }
+  updateProgress(); updateXPDisplay();
 }
 
 function toggleEx(el) {
   el.classList.toggle('done');
-  const g = getGlobal();
-  if(el.classList.contains('done')) { g.xp=(g.xp||0)+1; saveGlobal(g); showToast('+1 XP'); updateXP(); }
-  else { g.xp=Math.max(0,(g.xp||0)-1); saveGlobal(g); updateXP(); }
+  const g = getG();
+  if(el.classList.contains('done')) {
+    const old=g.xp; g.xp=(g.xp||0)+1; saveG(g);
+    showToast('+1 XP'); updateXPDisplay();
+    checkLevelUp(old,g.xp,g);
+    // check if full workout done
+    const wCard = el.closest('.workout-card');
+    if(wCard) {
+      const exes = wCard.querySelectorAll('.exercise');
+      const doneExes = wCard.querySelectorAll('.exercise.done');
+      if(exes.length === doneExes.length) {
+        const state=getState(); state._workout_done=true; saveState(state);
+        checkAchievements(g,state);
+      }
+    }
+  } else { g.xp=Math.max(0,(g.xp||0)-1); saveG(g); updateXPDisplay(); }
 }
 
-// ══════════════════════════════════════════
+// ══════════════════════════════════════════════════════════
 // PROGRESS
-// ══════════════════════════════════════════
-
-function countCheckables() {
+// ══════════════════════════════════════════════════════════
+function updateProgress() {
   const items = document.querySelectorAll('#tab-vandaag .check-item, #tab-vandaag .supp-item');
   const total = items.length;
-  const done = [...items].filter(i=>i.classList.contains('done')).length;
-  return {total, done};
-}
-
-function updateProgress() {
-  const {total,done} = countCheckables();
-  const pct = total ? Math.round(done/total*100) : 0;
+  const done  = [...items].filter(i=>i.classList.contains('done')).length;
+  const pct   = total ? Math.round(done/total*100) : 0;
   document.getElementById('progFill').style.width = pct+'%';
-  document.getElementById('progPct').textContent = pct+'%';
-  // save daily pct
-  const s = getState();
-  s._pct = pct; s._done = done; s._total = total;
+  document.getElementById('progPct').textContent  = pct+'%';
+  const s=getState(); s._pct=pct; s._done=done; s._total=total;
+  if(pct===100) s._perfect=true;
   saveState(s);
+  // check cbk done
+  const cbkIds=['cbk1','cbk2','cbk3'];
+  if(cbkIds.every(id=>document.querySelector('[data-id="'+id+'"].done'))) {
+    const st=getState(); st._cbk_done=true; saveState(st);
+    checkAchievements(getG(),getState());
+  }
+  // check supps done
+  const suppIds=['s1','s2','s3','s4'];
+  if(suppIds.every(id=>document.querySelector('[data-id="'+id+'"].done'))) {
+    const st=getState(); st._supp_done=true; saveState(st);
+    checkAchievements(getG(),getState());
+  }
+  if(pct===100) checkAchievements(getG(),getState());
 }
 
-function updateXP() {
-  const g = getGlobal();
-  const xp = g.xp || 0;
-  const level = Math.floor(xp/50)+1;
-  const xpInLevel = xp % 50;
-  g.level = level; saveGlobal(g);
+// ══════════════════════════════════════════════════════════
+// XP & LEVEL
+// ══════════════════════════════════════════════════════════
+function updateXPDisplay() {
+  const g = getG();
+  const xp = g.xp||0;
+  const level = Math.max(1, Math.floor(xp/50)+1);
+  const xpInLevel = xp%50;
+  g.level = level; saveG(g);
   document.getElementById('xpBadge').textContent = '⚡ '+xp+' XP';
-  document.getElementById('levelTitle').textContent = 'Level '+level;
-  document.getElementById('levelSub').textContent = xpInLevel+' / 50 XP';
-  document.getElementById('levelFill').style.width = (xpInLevel/50*100)+'%';
+  const lName = LEVEL_NAMES[Math.min(level,LEVEL_NAMES.length-1)] || 'Master';
+  const lEmoji = LEVEL_EMOJIS[Math.min(level,LEVEL_EMOJIS.length-1)] || '🌟';
+  document.getElementById('levelTitle').textContent = 'Level '+level+' — '+lName;
+  document.getElementById('levelSub').textContent   = xpInLevel+' / 50 XP naar volgend level';
+  document.getElementById('levelFill').style.width  = (xpInLevel/50*100)+'%';
+  document.getElementById('levelEmoji').textContent = lEmoji;
 }
 
-function updateStreak() {
-  const g = getGlobal();
-  const today = dateKey();
-  const yesterday = weekKey(1);
-  if(g.lastActive === today) { /* already updated */ }
-  else if(g.lastActive === yesterday) { g.streak=(g.streak||0)+1; g.lastActive=today; saveGlobal(g); }
-  else if(!g.lastActive) { g.streak=1; g.lastActive=today; saveGlobal(g); }
-  else { g.streak=1; g.lastActive=today; saveGlobal(g); }
-  document.getElementById('streakBadge').textContent = '🔥 '+(g.streak||0)+'d';
+function checkLevelUp(oldXP, newXP, g) {
+  const oldLvl = Math.floor(oldXP/50)+1;
+  const newLvl = Math.floor(newXP/50)+1;
+  if(newLvl > oldLvl) {
+    setTimeout(()=>showLevelUp(newLvl), 300);
+    checkAchievements(g, getState());
+  }
 }
 
-// ══════════════════════════════════════════
-// WORKOUT
-// ══════════════════════════════════════════
-
-let selectedWorkout = null;
-
-function selectWorkout(type) {
-  selectedWorkout = type;
-  document.getElementById('pillA').classList.toggle('selected', type==='A');
-  document.getElementById('pillB').classList.toggle('selected', type==='B');
-  document.getElementById('workoutA').style.display = type==='A' ? 'block' : 'none';
-  document.getElementById('workoutB').style.display = type==='B' ? 'block' : 'none';
-  document.getElementById('noWorkout').style.display = 'none';
-  // auto open
-  const card = document.getElementById('workout'+type);
-  card.classList.add('open');
+function showLevelUp(lvl) {
+  const lName  = LEVEL_NAMES[Math.min(lvl,LEVEL_NAMES.length-1)] || 'Master';
+  const lEmoji = LEVEL_EMOJIS[Math.min(lvl,LEVEL_EMOJIS.length-1)] || '🌟';
+  document.getElementById('luIcon').textContent  = lEmoji;
+  document.getElementById('luTitle').textContent = 'Level Up!';
+  document.getElementById('luSub').textContent   = 'Je bent nu Level '+lvl+' — '+lName;
+  document.getElementById('luOverlay').classList.add('show');
 }
 
-function toggleWorkout(id) {
-  document.getElementById(id).classList.toggle('open');
+function closeLevelUp() {
+  document.getElementById('luOverlay').classList.remove('show');
 }
 
-// ══════════════════════════════════════════
-// RULE CARDS
-// ══════════════════════════════════════════
-
-function toggleRule(headerEl) {
-  headerEl.closest('.rule-card').classList.toggle('open');
-}
-
-// ══════════════════════════════════════════
-// JOURNAL
-// ══════════════════════════════════════════
-
-function saveJournal(el) {
-  const j = getJournal();
-  j[el.dataset.jkey] = el.value;
-  saveJournalData(j);
-}
-
-function loadJournal() {
-  const j = getJournal();
-  document.querySelectorAll('[data-jkey]').forEach(el => {
-    if(j[el.dataset.jkey]) el.value = j[el.dataset.jkey];
+// ══════════════════════════════════════════════════════════
+// ACHIEVEMENTS
+// ══════════════════════════════════════════════════════════
+function checkAchievements(g, state) {
+  const unlocked = g.unlocked || [];
+  ACHIEVEMENTS.forEach(ach => {
+    if(unlocked.includes(ach.id)) return;
+    let met = false;
+    if(ach.req==='xp')      met = (g.xp||0) >= ach.val;
+    if(ach.req==='streak')  met = (g.streak||0) >= ach.val;
+    if(ach.req==='level')   met = (g.level||1) >= ach.val;
+    if(ach.req==='special') {
+      if(ach.val==='cbk_done')    met = !!state._cbk_done;
+      if(ach.val==='workout_done')met = !!state._workout_done;
+      if(ach.val==='supp_done')   met = !!state._supp_done;
+      if(ach.val==='perfect_day') met = !!state._perfect;
+      if(ach.val==='journal3') {
+        let cnt=0;
+        for(let i=0;i<7;i++) {
+          const j=localStorage.getItem('ms2_journal_'+dayOffset(i));
+          if(j && Object.values(JSON.parse(j)).some(v=>v.trim().length>0)) cnt++;
+        }
+        met = cnt>=3;
+      }
+    }
+    if(met) {
+      unlocked.push(ach.id);
+      g.unlocked=unlocked; saveG(g);
+      setTimeout(()=>showAchPopup(ach), 600);
+    }
   });
 }
 
-// ══════════════════════════════════════════
+let achPopTimer;
+function showAchPopup(ach) {
+  document.getElementById('achPopIcon').textContent = ach.icon;
+  document.getElementById('achPopName').textContent = ach.name;
+  document.getElementById('achPopDesc').textContent = ach.desc;
+  const popup = document.getElementById('achPopup');
+  popup.classList.add('show');
+  clearTimeout(achPopTimer);
+  achPopTimer = setTimeout(()=>popup.classList.remove('show'), 3500);
+}
+
+function renderAchievements() {
+  const g = getG();
+  const unlocked = g.unlocked||[];
+  const grid = document.getElementById('achGrid');
+  grid.innerHTML='';
+  ACHIEVEMENTS.forEach(ach => {
+    const isUnlocked = unlocked.includes(ach.id);
+    const div=document.createElement('div');
+    div.className='ach-card '+(isUnlocked?'unlocked':'locked');
+    div.innerHTML=`
+      ${isUnlocked?'<div class="ach-unlocked-badge">✓</div>':''}
+      <span class="ach-icon">${ach.icon}</span>
+      <div class="ach-name">${ach.name}</div>
+      <div class="ach-desc">${ach.desc}</div>
+      <div class="ach-req">${isUnlocked?'Behaald ✓':reqLabel(ach)}</div>
+    `;
+    grid.appendChild(div);
+  });
+}
+
+function reqLabel(ach) {
+  if(ach.req==='xp')     return ach.val+' XP nodig';
+  if(ach.req==='streak') return ach.val+' dagen streak';
+  if(ach.req==='level')  return 'Level '+ach.val;
+  return 'Speciaal';
+}
+
+// ══════════════════════════════════════════════════════════
+// WORKOUT
+// ══════════════════════════════════════════════════════════
+function selectWorkout(t) {
+  document.getElementById('pillA').classList.toggle('selected',t==='A');
+  document.getElementById('pillB').classList.toggle('selected',t==='B');
+  document.getElementById('workoutA').style.display=t==='A'?'block':'none';
+  document.getElementById('workoutB').style.display=t==='B'?'block':'none';
+  document.getElementById('noWorkout').style.display='none';
+  document.getElementById('workout'+t).classList.add('open');
+}
+function toggleWorkout(id) { document.getElementById(id).classList.toggle('open'); }
+
+// ══════════════════════════════════════════════════════════
+// CAROLYN RULES
+// ══════════════════════════════════════════════════════════
+function toggleRule(h) { h.closest('.rule-card').classList.toggle('open'); }
+
+// ══════════════════════════════════════════════════════════
+// JOURNAL
+// ══════════════════════════════════════════════════════════
+function saveJournal(el) { const j=getJournal(); j[el.dataset.jkey]=el.value; saveJD(j); }
+function loadJournal() { const j=getJournal(); document.querySelectorAll('[data-jkey]').forEach(el=>{ if(j[el.dataset.jkey]) el.value=j[el.dataset.jkey]; }); }
+
+// ══════════════════════════════════════════════════════════
 // MEALS
-// ══════════════════════════════════════════
-
+// ══════════════════════════════════════════════════════════
 function addMeal() {
-  const naam = document.getElementById('mNaam').value.trim();
+  const naam=document.getElementById('mNaam').value.trim();
   if(!naam) return;
-  const kcal = parseFloat(document.getElementById('mKcalIn').value)||0;
-  const prot = parseFloat(document.getElementById('mProtIn').value)||0;
-  const carb = parseFloat(document.getElementById('mCarbIn').value)||0;
-  const vet  = parseFloat(document.getElementById('mVetIn').value)||0;
-
-  const meals = getMeals();
-  const id = Date.now();
-  meals.push({id, naam, kcal, prot, carb, vet});
-  saveMeals(meals);
-  renderMeals();
-
-  document.getElementById('mNaam').value='';
-  document.getElementById('mKcalIn').value='';
-  document.getElementById('mProtIn').value='';
-  document.getElementById('mCarbIn').value='';
-  document.getElementById('mVetIn').value='';
+  const kcal=parseFloat(document.getElementById('mKcalIn').value)||0;
+  const prot=parseFloat(document.getElementById('mProtIn').value)||0;
+  const carb=parseFloat(document.getElementById('mCarbIn').value)||0;
+  const vet =parseFloat(document.getElementById('mVetIn').value)||0;
+  const meals=getMeals();
+  meals.push({id:Date.now(),naam,kcal,prot,carb,vet});
+  saveMeals(meals); renderMeals();
+  ['mNaam','mKcalIn','mProtIn','mCarbIn','mVetIn'].forEach(id=>document.getElementById(id).value='');
   showToast('Toegevoegd: '+naam);
 }
-
-function deleteMeal(id) {
-  const meals = getMeals().filter(m=>m.id!==id);
-  saveMeals(meals);
-  renderMeals();
-}
-
+function deleteMeal(id) { saveMeals(getMeals().filter(m=>m.id!==id)); renderMeals(); }
 function renderMeals() {
-  const meals = getMeals();
-  const list = document.getElementById('mealList');
-  list.innerHTML = '';
-
-  let totKcal=0, totProt=0, totCarb=0, totVet=0;
-  meals.forEach(m => {
-    totKcal+=m.kcal; totProt+=m.prot; totCarb+=m.carb; totVet+=m.vet;
-    const div = document.createElement('div');
-    div.className = 'meal-entry';
-    div.innerHTML = `
-      <div style="flex:1">
-        <div class="meal-name">${m.naam}</div>
-        <div class="meal-macros">${m.prot}g eiwit · ${m.carb}g koolh · ${m.vet}g vet</div>
-      </div>
-      <div class="meal-kcal">${m.kcal} kcal</div>
-      <button class="meal-del" onclick="deleteMeal(${m.id})">✕</button>
-    `;
+  const meals=getMeals();
+  const list=document.getElementById('mealList');
+  list.innerHTML='';
+  let tk=0,tp=0,tc=0,tv=0;
+  meals.forEach(m=>{
+    tk+=m.kcal;tp+=m.prot;tc+=m.carb;tv+=m.vet;
+    const div=document.createElement('div');
+    div.className='meal-entry';
+    div.innerHTML=`<div style="flex:1"><div class="meal-name">${m.naam}</div><div class="meal-macros">${m.prot}g eiwit · ${m.carb}g koolh · ${m.vet}g vet</div></div><div class="meal-kcal">${m.kcal} kcal</div><button class="meal-del" onclick="deleteMeal(${m.id})">✕</button>`;
     list.appendChild(div);
   });
-
-  document.getElementById('mKcal').textContent = Math.round(totKcal);
-  document.getElementById('mProt').textContent = Math.round(totProt)+'g';
-  document.getElementById('mCarb').textContent = Math.round(totCarb)+'g';
-  document.getElementById('mVet').textContent  = Math.round(totVet)+'g';
-
-  const clamp = (v,max) => Math.min(100, Math.round(v/max*100));
-  document.getElementById('bKcal').style.width = clamp(totKcal,1200)+'%';
-  document.getElementById('bProt').style.width = clamp(totProt,100)+'%';
-  document.getElementById('bCarb').style.width = clamp(totCarb,100)+'%';
-  document.getElementById('bVet').style.width  = clamp(totVet,40)+'%';
+  document.getElementById('mKcal').textContent=Math.round(tk);
+  document.getElementById('mProt').textContent=Math.round(tp)+'g';
+  document.getElementById('mCarb').textContent=Math.round(tc)+'g';
+  document.getElementById('mVet').textContent =Math.round(tv)+'g';
+  const cl=(v,mx)=>Math.min(100,Math.round(v/mx*100))+'%';
+  document.getElementById('bKcal').style.width=cl(tk,1200);
+  document.getElementById('bProt').style.width=cl(tp,100);
+  document.getElementById('bCarb').style.width=cl(tc,100);
+  document.getElementById('bVet').style.width =cl(tv,40);
 }
 
-// ══════════════════════════════════════════
+// ══════════════════════════════════════════════════════════
 // STATS
-// ══════════════════════════════════════════
-
+// ══════════════════════════════════════════════════════════
 function renderStats() {
-  const g = getGlobal();
-  document.getElementById('sStreak').textContent = g.streak||0;
-  document.getElementById('sXP').textContent = g.xp||0;
-  document.getElementById('sLevel').textContent = g.level||1;
-
-  const barsEl = document.getElementById('chartBars');
-  const daysEl = document.getElementById('chartDays');
-  barsEl.innerHTML=''; daysEl.innerHTML='';
-
-  const pcts = [];
+  const g=getG();
+  document.getElementById('sStreak').textContent=g.streak||0;
+  document.getElementById('sXP').textContent=g.xp||0;
+  document.getElementById('sLevel').textContent=g.level||1;
+  const bars=document.getElementById('chartBars');
+  const daysEl=document.getElementById('chartDays');
+  bars.innerHTML=''; daysEl.innerHTML='';
+  const pcts=[];
   for(let i=6;i>=0;i--) {
-    const d = new Date(); d.setDate(d.getDate()-i);
-    const key = d.toISOString().slice(0,10);
-    let pct = 0;
-    try {
-      const s = JSON.parse(localStorage.getItem('ms_state_'+key)||'{}');
-      pct = s._pct||0;
-    } catch {}
+    const d=new Date(); d.setDate(d.getDate()-i);
+    const key=d.toISOString().slice(0,10);
+    let pct=0;
+    try { const s=JSON.parse(localStorage.getItem('ms2_state_'+key)||'{}'); pct=s._pct||0; } catch{}
     pcts.push(pct);
-
-    const col = document.createElement('div');
-    col.className='chart-col';
-    const cl = pct>=70?'green':pct>=40?'yellow':'red';
-    const h = Math.max(4, Math.round(pct*0.8));
-    col.innerHTML=`<div class="chart-bar ${pct===0?'empty':cl}" style="height:${h}px"></div>`;
-    barsEl.appendChild(col);
-
-    const dayEl = document.createElement('div');
-    dayEl.className='chart-col';
-    dayEl.innerHTML=`<div class="chart-day">${DAYS[d.getDay()]}</div>`;
-    daysEl.appendChild(dayEl);
+    const col=document.createElement('div'); col.className='chart-col';
+    const cl=pct>=70?'green':pct>=40?'yellow':'red';
+    col.innerHTML=`<div class="chart-bar ${pct===0?'empty':cl}" style="height:${Math.max(4,Math.round(pct*0.8))}px"></div>`;
+    bars.appendChild(col);
+    const dc=document.createElement('div'); dc.className='chart-col';
+    dc.innerHTML=`<div class="chart-day">${DAYS_NL[d.getDay()]}</div>`;
+    daysEl.appendChild(dc);
   }
-
-  const nonZero = pcts.filter(p=>p>0);
-  const avg = nonZero.length ? Math.round(nonZero.reduce((a,b)=>a+b,0)/nonZero.length) : 0;
-  const best = pcts.length ? Math.max(...pcts) : 0;
-  document.getElementById('sAvg').textContent = avg+'%';
-  document.getElementById('sBest').textContent = best+'%';
-
-  let interp = 'Begin vandaag. Elke vink telt.';
-  if(avg>=70) interp='Sterk. Je bent consistent bezig. Houd dit vast.';
-  else if(avg>=40) interp='Matig. Je bent er mee bezig, maar er is ruimte om te groeien.';
+  const nz=pcts.filter(p=>p>0);
+  const avg=nz.length?Math.round(nz.reduce((a,b)=>a+b,0)/nz.length):0;
+  const best=pcts.length?Math.max(...pcts):0;
+  document.getElementById('sAvg').textContent=avg+'%';
+  document.getElementById('sBest').textContent=best+'%';
+  let interp='Begin vandaag. Elke vink telt.';
+  if(avg>=70) interp='Sterk. Je bent consistent. Houd dit vast.';
+  else if(avg>=40) interp='Je bent bezig, maar er is ruimte te groeien.';
   else if(avg>0) interp='Laag percentage. Geen oordeel — begin opnieuw met één ding.';
-  document.getElementById('sInterp').textContent = interp;
+  document.getElementById('sInterp').textContent=interp;
+  renderAchievements();
 }
 
-// ══════════════════════════════════════════
+// ══════════════════════════════════════════════════════════
+// STREAK
+// ══════════════════════════════════════════════════════════
+function updateStreak() {
+  const g=getG();
+  const today=dk();
+  const yest=dayOffset(1);
+  if(g.lastActive!==today) {
+    if(g.lastActive===yest) g.streak=(g.streak||0)+1;
+    else if(!g.lastActive)  g.streak=1;
+    else                    g.streak=1;
+    g.lastActive=today; saveG(g);
+    checkAchievements(g,getState());
+  }
+  document.getElementById('streakBadge').textContent='🔥 '+(g.streak||0)+'d';
+}
+
+// ══════════════════════════════════════════════════════════
 // TOAST
-// ══════════════════════════════════════════
-
-let toastTimer;
+// ══════════════════════════════════════════════════════════
+let toastT;
 function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>t.classList.remove('show'),1800);
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(toastT);
+  toastT=setTimeout(()=>t.classList.remove('show'),1800);
 }
 
-// ══════════════════════════════════════════
-// DATE
-// ══════════════════════════════════════════
-
+// ══════════════════════════════════════════════════════════
+// DATES
+// ══════════════════════════════════════════════════════════
 function setDates() {
-  const d = new Date();
-  const str = DAYS[d.getDay()]+' '+d.getDate()+' '+MONTHS[d.getMonth()]+' '+d.getFullYear();
-  document.getElementById('dateBanner').textContent = str;
-  document.getElementById('journalDate').textContent = str;
+  const d=new Date();
+  const s=DAYS_NL[d.getDay()]+' '+d.getDate()+' '+MONTHS_NL[d.getMonth()]+' '+d.getFullYear();
+  document.getElementById('dateBanner').textContent=s;
+  document.getElementById('journalDate').textContent=s;
 }
 
-// ══════════════════════════════════════════
-// LOAD STATE ON INIT
-// ══════════════════════════════════════════
-
+// ══════════════════════════════════════════════════════════
+// LOAD STATE
+// ══════════════════════════════════════════════════════════
 function loadCheckState() {
-  const s = getState();
-  document.querySelectorAll('[data-id]').forEach(el => {
-    if(s[el.dataset.id]) el.classList.add('done');
-  });
+  const s=getState();
+  document.querySelectorAll('[data-id]').forEach(el=>{ if(s[el.dataset.id]) el.classList.add('done'); });
 }
 
-// ══════════════════════════════════════════
+// ══════════════════════════════════════════════════════════
 // INIT
-// ══════════════════════════════════════════
-
+// ══════════════════════════════════════════════════════════
 setDates();
 loadCheckState();
 updateProgress();
-updateXP();
+updateXPDisplay();
 updateStreak();
 renderMeals();
 loadJournal();
