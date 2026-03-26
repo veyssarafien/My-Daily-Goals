@@ -1323,6 +1323,7 @@ function goTo(id,el){
   el.classList.add('active');
   document.getElementById('scroller').scrollTop=0;
   if(id==='stats') renderStats();
+  if(id==='archief') switchATab(currentATab);
 }
 
 /* ── Check items ── */
@@ -1687,14 +1688,7 @@ function switchATab(tab) {
   }
 }
 
-// Override goTo to also render archive when visiting
-const _origGoTo = goTo;
-function goTo(id, el) {
-  _origGoTo(id, el);
-  if (id === 'archief') {
-    switchATab(currentATab);
-  }
-}
+
 
 </script>
 
