@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Daily Goals</title>
+<title>My Daily Goals Elite</title>
 
 <style>
-body {margin:0;font-family:Arial;background:#0c0d12;color:white;}
+body{margin:0;background:#0c0d12;color:white;font-family:Arial;}
 .top{padding:20px;}
 .bar{height:6px;background:#222;border-radius:10px;margin-top:10px;}
-.fill{height:100%;width:0%;background:#4facfe;}
+.fill{height:100%;background:linear-gradient(90deg,#4facfe,#00f2fe);}
 .section{padding:15px;}
 .glass{background:#1a1d26;padding:15px;border-radius:15px;margin-bottom:15px;}
-.item{padding:12px;background:#222;margin-top:10px;border-radius:10px;cursor:pointer;}
+.item{padding:12px;background:#222;margin-top:8px;border-radius:10px;cursor:pointer;}
 .item.done{opacity:0.4;}
 .nav{position:fixed;bottom:0;width:100%;display:flex;background:#111;}
-.nav div{flex:1;text-align:center;padding:10px;color:#777;font-size:11px;}
+.nav div{flex:1;text-align:center;padding:10px;font-size:11px;color:#777;}
 .nav .active{color:white;}
 .tab{display:none;}
 .tab.active{display:block;}
-textarea,input{width:100%;padding:10px;margin-top:10px;background:#111;color:white;border:none;border-radius:10px;}
+textarea,input{width:100%;margin-top:10px;padding:10px;background:#111;border:none;color:white;border-radius:10px;}
 </style>
 </head>
 
@@ -27,6 +27,8 @@ textarea,input{width:100%;padding:10px;margin-top:10px;background:#111;color:whi
 
 <div class="top">
 <h2>My Daily Goals</h2>
+<div id="level"></div>
+<div id="streak"></div>
 <div class="bar"><div class="fill" id="bar"></div></div>
 </div>
 
@@ -34,20 +36,77 @@ textarea,input{width:100%;padding:10px;margin-top:10px;background:#111;color:whi
 <div id="today" class="tab active section">
 
 <div class="glass">
-<h3>🧠 Basics</h3>
+<h3>🧠 Essentials</h3>
 <div class="item" onclick="toggle(this)">💧 2L water</div>
-<div class="item" onclick="toggle(this)">📖 Studie</div>
-<div class="item" onclick="toggle(this)">✍️ Journal</div>
+<div class="item" onclick="toggle(this)">📖 Studeren</div>
 <div class="item" onclick="toggle(this)">🧘 Meditatie</div>
+<div class="item" onclick="toggle(this)">✍️ Journal</div>
+</div>
+
+<div class="glass">
+<h3>💊 Supplementen</h3>
+<div class="item" onclick="toggle(this)">Omega 3 (met vet eten)</div>
+<div class="item" onclick="toggle(this)">CoQ10 (niet nuchter)</div>
+<div class="item" onclick="toggle(this)">Creatine (dagelijks)</div>
+<div class="item" onclick="toggle(this)">Magnesium (avond)</div>
 </div>
 
 <div class="glass">
 <h3>💪 Workout</h3>
-<div class="item" onclick="selectWorkout('A',this)">Workout A</div>
-<div class="item" onclick="selectWorkout('B',this)">Workout B</div>
+<div class="item" onclick="loadWorkout('A')">Workout A</div>
+<div class="item" onclick="loadWorkout('B')">Workout B</div>
 </div>
 
-<div id="workoutContainer"></div>
+<div id="workout"></div>
+
+</div>
+
+<!-- CAROLYN -->
+<div id="carolyn" class="tab section">
+
+<div class="glass">
+<h3>🤍 Basis</h3>
+Rustig • Zelfzeker • Geen haast • Jij hoort hier
+</div>
+
+<div class="glass">
+<h3>👁️ Lichaam</h3>
+Rug recht • Schouders naar achter • Geen kleine bewegingen
+</div>
+
+<div class="glass">
+<h3>🎙️ Spreken</h3>
+Traag • Pauzes • Geen excuses
+</div>
+
+<div class="glass">
+<h3>📍 Situaties</h3>
+<div class="item">Binnenkomen → stop → kijk → beweeg</div>
+<div class="item">Hulp → “Ik red het”</div>
+<div class="item">Overweldigd → vertrek</div>
+</div>
+
+</div>
+
+<!-- JOURNAL -->
+<div id="journal" class="tab section">
+
+<div class="glass">
+<h3>☀️ Ochtend</h3>
+<textarea placeholder="Hoe voel ik me?"></textarea>
+<textarea placeholder="Wat wil ik vandaag?"></textarea>
+</div>
+
+<div class="glass">
+<h3>🌙 Avond</h3>
+<textarea placeholder="Wat ging goed?"></textarea>
+<textarea placeholder="Wat kan beter?"></textarea>
+</div>
+
+<div class="glass">
+<h3>💭 Reflectie</h3>
+<textarea placeholder="Wie wil ik worden?"></textarea>
+</div>
 
 </div>
 
@@ -55,116 +114,59 @@ textarea,input{width:100%;padding:10px;margin-top:10px;background:#111;color:whi
 <div id="meals" class="tab section">
 
 <div class="glass">
-<h3>🍽️ Voeg maaltijd toe</h3>
-<input id="food" placeholder="Wat heb je gegeten?">
+<input id="food" placeholder="Voedsel">
 <input id="kcal" placeholder="Kcal">
-<input id="protein" placeholder="Proteïne (g)">
-<input id="carbs" placeholder="Carbs (g)">
-<input id="fat" placeholder="Vet (g)">
+<input id="protein" placeholder="Proteïne">
+<input id="carbs" placeholder="Carbs">
+<input id="fat" placeholder="Vet">
 <div class="item" onclick="addMeal()">Toevoegen</div>
 </div>
 
-<div class="glass">
-<h3>📊 Doelen</h3>
-Kcal: <span id="kcalTotal">0</span> / 1200<br>
-Proteïne: <span id="proteinTotal">0</span> / 100g<br>
-Carbs: <span id="carbsTotal">0</span> / 100g<br>
-Vet: <span id="fatTotal">0</span> / 40g
-</div>
-
-<div class="glass">
-<h3>📋 Vandaag gegeten</h3>
 <div id="mealList"></div>
-</div>
 
 </div>
 
-<!-- GRAPH -->
-<div id="graph" class="tab section">
-<div class="glass">
-<h3>📊 Voortgang</h3>
-<div id="graphData"></div>
-</div>
-</div>
-
-<!-- CAROLYN -->
-<div id="carolyn" class="tab section">
-<div class="glass">
-<h3>🤍 Gedrag</h3>
-Rug recht • Ogen vooruit • Rustig spreken • Geen excuses
-</div>
-</div>
-
-<!-- JOURNAL -->
-<div id="journal" class="tab section">
-<div class="glass">
-<textarea placeholder="Hoe voel ik me?"></textarea>
-<textarea placeholder="Wat ging goed?"></textarea>
-<textarea placeholder="Wat kan beter?"></textarea>
-</div>
+<!-- STATS -->
+<div id="stats" class="tab section">
+<div id="graph"></div>
 </div>
 
 <!-- NAV -->
 <div class="nav">
-<div onclick="switchTab('today',this)" class="active">Vandaag</div>
-<div onclick="switchTab('meals',this)">Meals</div>
-<div onclick="switchTab('graph',this)">Stats</div>
-<div onclick="switchTab('carolyn',this)">Carolyn</div>
-<div onclick="switchTab('journal',this)">Journal</div>
+<div onclick="tab('today',this)" class="active">Vandaag</div>
+<div onclick="tab('carolyn',this)">Carolyn</div>
+<div onclick="tab('journal',this)">Journal</div>
+<div onclick="tab('meals',this)">Meals</div>
+<div onclick="tab('stats',this)">Stats</div>
 </div>
 
 <script>
 
-let kcalTotal=0, proteinTotal=0, carbsTotal=0, fatTotal=0;
-
-function addMeal(){
-let food=document.getElementById("food").value;
-let kcal=Number(document.getElementById("kcal").value);
-let protein=Number(document.getElementById("protein").value);
-let carbs=Number(document.getElementById("carbs").value);
-let fat=Number(document.getElementById("fat").value);
-
-kcalTotal+=kcal;
-proteinTotal+=protein;
-carbsTotal+=carbs;
-fatTotal+=fat;
-
-document.getElementById("kcalTotal").innerText=kcalTotal;
-document.getElementById("proteinTotal").innerText=proteinTotal;
-document.getElementById("carbsTotal").innerText=carbsTotal;
-document.getElementById("fatTotal").innerText=fatTotal;
-
-let div=document.createElement("div");
-div.className="item";
-div.innerText=food+" ("+kcal+" kcal)";
-document.getElementById("mealList").appendChild(div);
-}
-
+// WORKOUTS
 const workouts={
-A:["Warm up","Workout 60min","Stretch"],
-B:["Warm up","Workout 60min","Stretch"]
+A:["Warm-up","Shoulder press 4x10","Curls 4x10","Dips","Stretch"],
+B:["Warm-up","High reps","Core","Stretch"]
 };
 
-function selectWorkout(type,el){
-document.querySelectorAll("[onclick^='selectWorkout']").forEach(i=>i.classList.remove("done"));
-el.classList.add("done");
-
-let c=document.getElementById("workoutContainer");
-c.innerHTML="";
-workouts[type].forEach(ex=>{
+function loadWorkout(type){
+let w=document.getElementById("workout");
+w.innerHTML="";
+workouts[type].forEach(x=>{
 let d=document.createElement("div");
 d.className="item";
 d.onclick=function(){toggle(this)};
-d.innerText=ex;
-c.appendChild(d);
+d.innerText=x;
+w.appendChild(d);
 });
 }
 
+// TOGGLE
 function toggle(el){
 el.classList.toggle("done");
 update();
 }
 
+// UPDATE
 function update(){
 let items=document.querySelectorAll(".item");
 let done=document.querySelectorAll(".done").length;
@@ -175,20 +177,32 @@ localStorage.setItem("day_"+new Date().toDateString(),pct);
 loadGraph();
 }
 
+// GRAPH
 function loadGraph(){
-let g=document.getElementById("graphData");
+let g=document.getElementById("graph");
 g.innerHTML="";
-for(let i=0;i<7;i++){
+for(let i=6;i>=0;i--){
 let d=new Date();
 d.setDate(d.getDate()-i);
 let val=localStorage.getItem("day_"+d.toDateString())||0;
-let div=document.createElement("div");
-div.innerText=d.toDateString()+" - "+val+"%";
-g.appendChild(div);
+
+let bar=document.createElement("div");
+bar.style.height="10px";
+bar.style.background="#222";
+bar.style.margin="8px 0";
+
+let fill=document.createElement("div");
+fill.style.width=val+"%";
+fill.style.height="100%";
+fill.style.background="#4facfe";
+
+bar.appendChild(fill);
+g.appendChild(bar);
 }
 }
 
-function switchTab(id,el){
+// NAV
+function tab(id,el){
 document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
 document.querySelectorAll(".nav div").forEach(n=>n.classList.remove("active"));
 document.getElementById(id).classList.add("active");
