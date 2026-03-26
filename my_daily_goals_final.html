@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Daily Goals</title>
+
+<style>
+body {margin:0;font-family:Arial;background:#0c0d12;color:white;}
+.top{padding:20px;}
+.stats{color:#aaa;}
+.bar{height:6px;background:#222;border-radius:10px;margin-top:10px;}
+.fill{height:100%;width:0%;background:linear-gradient(90deg,#4facfe,#00f2fe);}
+.section{padding:15px;}
+.glass{background:#1a1d26;padding:15px;border-radius:15px;margin-bottom:15px;}
+.item{padding:12px;background:#222;margin-top:10px;border-radius:10px;display:flex;gap:10px;}
+.item.done{opacity:0.4;}
+.check{width:20px;height:20px;border:2px solid #555;border-radius:50%;}
+.item.done .check{background:#4ade80;border:none;}
+.nav{position:fixed;bottom:0;width:100%;display:flex;background:#111;}
+.nav div{flex:1;text-align:center;padding:10px;color:#777;}
+.nav .active{color:white;}
+.tab{display:none;}
+.tab.active{display:block;}
+textarea{width:100%;padding:10px;margin-top:10px;background:#111;color:white;border-radius:10px;}
+</style>
+</head>
+
+<body>
+
+<div class="top">
+<h2>My Daily Goals</h2>
+<div class="stats">
+🔥 <span id="streak">0</span>
+⚡ <span id="xp">0</span>
+🏆 lvl <span id="level">1</span>
+</div>
+<div class="bar"><div class="fill" id="bar"></div></div>
+</div>
+
+<div id="today" class="tab active section">
+<div class="glass"><b>70% = geslaagde dag</b></div>
+
+<div class="glass">
+<h3>💊 Supplementen</h3>
+<div class="item" onclick="toggle(this)"><div class="check"></div>Omega 3 (met vet)</div>
+<div class="item" onclick="toggle(this)"><div class="check"></div>CoQ10 (niet nuchter)</div>
+<div class="item" onclick="toggle(this)"><div class="check"></div>Creatine (dagelijks)</div>
+<div class="item" onclick="toggle(this)"><div class="check"></div>Magnesium (avond)</div>
+</div>
+
+<div class="glass">
+<h3>💪 Workout</h3>
+<div class="item" onclick="selectWorkout('A',this)"><div class="check"></div>Workout A</div>
+<div class="item" onclick="selectWorkout('B',this)"><div class="check"></div>Workout B</div>
+</div>
+
+<div id="workoutContainer"></div>
+</div>
+
+<div id="progress" class="tab section">
+<div class="glass">
+<h3>📊 Progress</h3>
+<div id="progressPercent">0%</div>
+<div style="height:150px;background:#111;border-radius:10px;">
+<div id="progressGraph" style="height:100%;width:0%;background:linear-gradient(90deg,#4facfe,#00f2fe);"></div>
+</div>
+</div>
+</div>
+
+<div id="calendar" class="tab section">
+<div class="glass">
+<h3>📅 Agenda</h3>
+<div id="calendarList"></div>
+</div>
+</div>
+
+<div id="carolyn" class="tab section">
+<div class="glass">
+<h3>🤍 Carolyn regels</h3>
+Rug recht, ogen vooruit, geen excuses, zeg minder maar sterker.
+</div>
+<div class="glass">
+<h3>📍 Situaties</h3>
+Binnenkomen: stop, kijk, beweeg rustig.<br>
+Mensen: blijf kalm.<br>
+Onder druk: maak jezelf groter.
+</div>
+</div>
+
+<div id="journal" class="tab section">
+<div class="glass">
+<h3>✍️ Journal</h3>
+<textarea id="j1"></textarea>
+<textarea id="j2"></textarea>
+</div>
+</div>
+
+<div class="nav">
+<div onclick="switchTab('today',this)" class="active">Vandaag</div>
+<div onclick="switchTab('progress',this)">Progress</div>
+<div onclick="switchTab('calendar',this)">Agenda</div>
+<div onclick="switchTab('carolyn',this)">Carolyn</div>
+<div onclick="switchTab('journal',this)">Journal</div>
+</div>
+
+<script>
+const workouts = {
+A: ["Warming up 10 min","Workout 60 min","Stretch"],
+B: ["Warming up 10 min","Workout 60 min","Stretch"]
+};
+
+let xp = localStorage.getItem("xp")||0;
+let streak = localStorage.getItem("streak")||0;
+
+function selectWorkout(type, el){
+document.querySelectorAll("[onclick^='selectWorkout']").forEach(i=>i.classList.remove("done"));
+el.classList.add("done");
+
+const container=document.getElementById("workoutContainer");
+container.innerHTML="";
+
+workouts[type].forEach(ex=>{
+let div=document.createElement("div");
+div.className="item";
+div.onclick=function(){toggle(this)};
+div.innerHTML="<div class='check'></div>"+ex;
+container.appendChild(div);
+});
+}
+
+function toggle(el){
+el.classList.toggle("done");
+xp++;
+localStorage.setItem("xp",xp);
+updateUI();
+}
+
+function updateUI(){
+document.getElementById("xp").innerText=xp;
+document.getElementById("streak").innerText=streak;
+document.getElementById("level").innerText=Math.floor(xp/100)+1;
+
+let items=document.querySelectorAll("#today .item");
+let done=document.querySelectorAll("#today .done").length;
+let pct=Math.round((done/items.length)*100);
+
+document.getElementById("bar").style.width=pct+"%";
+document.getElementById("progressPercent").innerText=pct+"%";
+document.getElementById("progressGraph").style.width=pct+"%";
+
+saveDay(pct);
+loadCalendar();
+}
+
+function saveDay(pct){
+localStorage.setItem("day_"+new Date().toDateString(),pct);
+}
+
+function loadCalendar(){
+let list=document.getElementById("calendarList");
+list.innerHTML="";
+for(let i=0;i<7;i++){
+let d=new Date();
+d.setDate(d.getDate()-i);
+let val=localStorage.getItem("day_"+d.toDateString())||0;
+let div=document.createElement("div");
+div.className="item";
+div.innerText=d.toDateString()+" — "+val+"%";
+list.appendChild(div);
+}
+}
+
+function switchTab(id,el){
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+document.querySelectorAll(".nav div").forEach(n=>n.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+el.classList.add("active");
+}
+
+updateUI();
+</script>
+
+</body>
+</html>
